@@ -32,6 +32,7 @@
             </nav>
         </section>
         <section class= 'container'></section>
+
         
         <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->
@@ -44,7 +45,7 @@
         <!-- Parse -->
         <script src="//www.parsecdn.com/js/parse-1.3.1.min.js"></script>
 
-        <!-- templates -->
+        <!-- TEMPLATES -->
         <script type='text/template' id='templates-home'>
             <section>
                 <h1>Binder</h1>
@@ -56,7 +57,6 @@
                     <ul>
                         <li><a href='#login'>Login</a></li>
                         <li><a href='#create'>Create Account</a></li>
-                        <li><a href='#logout'>Logout</a></li>
                     </ul>
                 </nav>
             </section>
@@ -68,13 +68,15 @@
                 <input type='text' name='firstName' placeholder='First Name'>
                 <input type='text' name='lastName' placeholder='Last Name'>
                 <select class='school-list'>
+                        <% _.each(schools, function(school){ %>
                
-                <option value='<%= this.name %>'> 
-                    <%=this.name%>
-                </option>
+                    <option value='<%= school.objectId %>'> 
+                            <%=school.Name%>: <%=school.City%>, <%=school.State%>
+                    </option>
+                        <% }) %>
                 
                 </select>
-                <input type='file' name='avatar'>
+                <input type='file' name='avatar' class='avatar'>
                 <input type='email' name='email' placeholder='Email'>
                 <input type='password' name='password' placeholder='Password'>
                 <button class='button'>'Create Account'</button>
@@ -89,7 +91,90 @@
                 <button class='button'>'Create Account'</button>
             </form>
         </script>
-        
+
+        <script type="text/template" id='templates-lobby'>
+            <div class='lobby-header'>
+                <img src='../images/logo.png'>
+                <span>What up <%=firstName%></span>
+            </div>
+            <div class='your-groups'>
+                <ul>
+                    <li>
+                        <a href='#'>Populate with group name</a>
+                    </li>
+                    <li>
+                        <a href='#'>Populate with group name</a>
+                    </li>
+                    <li>
+                        <a href='#'>Populate with group name</a>
+                    </li>
+                </ul>
+            </div>
+            <div class='other-groups'>
+                <ul>
+                    <li>
+                        <a href='#'>Populate with group name</a>
+                    </li>
+                    <li>
+                        <a href='#'>Populate with group name</a>
+                    </li>
+                    <li>
+                        <a href='#'>Populate with group name</a>
+                    </li>
+                </ul>
+            </div>
+        </script>
+
+        <script type="text/template" id='templates-group-details'>
+            <div class='group-header'>
+                <span>What up <%=firstName%></span>
+                <h2 class='group-name'>INSERT GROUP NAME</h3>
+            </div>
+            <div class='group-posts'>
+                <ul>
+                    <li>
+                        <a href='#'>
+                            <img src='http://www.fillmurray.com/200/200'>
+                            <h3>INSERT TITLE</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mollis nibh sit amet libero fermentum condimentum.
+                            </p>   
+                        </a>
+                    </li>
+                    <li>
+                        <a href='#'>
+                            <img src='http://www.fillmurray.com/200/200'>
+                            <h3>INSERT TITLE</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mollis nibh sit amet libero fermentum condimentum.
+                            </p>   
+                        </a>
+                    </li>
+                    <li>
+                        <a href='#'>
+                            <img src='http://www.fillmurray.com/200/200'>
+                            <h3>INSERT TITLE</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mollis nibh sit amet libero fermentum condimentum.
+                            </p>   
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class='group-action'>
+                <button class='join'>Join Us</button>
+                <button class='leave'>Leave Group</button>
+                <button class-'new-post'>New Post</button>
+            </div>
+        </script>
+
+        <script type='text/template' id='templates-new-post'>
+            <div class='new-post-header'>
+                <h2>New Post</h2>
+            </div>
+            <form class='new-post'>
+                <input type='text' name='title' placeholder='Post Title'>
+                <textarea name='post-body'>Post Details</textarea>
+                <button class='submit'>Submit Post</button>
+            </form>
+        </script>
 
         <!-- build:js scripts/main.js -->
         <script src="scripts/main.js"></script>

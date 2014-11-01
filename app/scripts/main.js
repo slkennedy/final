@@ -23,11 +23,13 @@
 //////////////////////////
 
 	App.Router = Parse.Router.extend ({
+
 		initialize: function (){
 			this.render();
 		},
 
 		render: function (){
+			console.log(this.collection);
 
 		},
 
@@ -77,7 +79,6 @@
 
 	App.Views.CreateAccountView = Parse.View.extend ({
 		template: _.template($('#templates-create-account').html()),
-		collection: Schools,
 
 		events: {
 			'click .button': 'createAccount'
@@ -85,54 +86,59 @@
 
 		initialize: function (){
 			console.log('initalize start');
-			console.log(this.collection.attributes);
-			_.bindAll(this, 'createAccount');
-			$('.container').append(this.el);
-			this.render();
+			var self = this;
+			this.collection = new Schools();
+			this.collection.fetch().then( function (){
+				$('.container').append(self.el);
+				self.render();
+			})
 			console.log('intialize ends');
 		},
 
 		render: function (){
-			console.log('render starts');
-			console.log(this);
-			this.$el.html(this.template(this.model));
-			console.log('render ends');
+			this.$el.html(this.template({schools: this.collection.toJSON()}));
 		},
 
 		createAccount: function (e){
-			console.log('create account starts');
 			e.preventDefault();
-			var user = new Parse.User ();
-			user.set ('firstName', $('input[name="firstName"]').val());
-			user.set ('lastName', $('input[name="lastName"]').val());
-			// user.set ('school', $('.school-list').val());
-			user.set ('username', $('input[name="email"]').val());
-			user.set ('email', $('input[name="email"]').val());			
-			user.set ('password', $('input[name="password"]').val());
-			user.set ('avatar', $('input[name="avatar"]').val());
+			
+			var query = new Parse.Query(School);
+			query.equalTo('objectId', $('.school-list').val());
+			query.first().then( function (school){
+				var user = new Parse.User ();
+				user.set ('firstName', $('input[name="firstName"]').val());
+				user.set ('lastName', $('input[name="lastName"]').val());
+				user.set ('school', school);
+				user.set ('username', $('input[name="email"]').val());
+				user.set ('email', $('input[name="email"]').val());			
+				user.set ('password', $('input[name="password"]').val());
 
-			user.signUp(null, {
-				success: function (user){
-					console.log('yea');
-					// Parse.User.logIn(
-					// 	$('input[value="email"]').val(),
-					// 	$('input[value="password"]').val(), {
-					// 		success: function(user){
-					// 			console.log('user created!');
-					// 		},
-					// 		error: function (user, error){
-					// 			console.log("not cool")
-					// 		}
-					// 	}
-					// )
-				},
-				error: function (){
-					console.log(error)
-					alert('error: '+error.code+' '+error.message);
+				var $uploadFile = $('.avatar')[0];
+				if ($uploadFile.files.length > 0){
+					var file = $uploadFile.files[0];
+				 	var parseFile = new Parse.File(file.name, file);
+				 	console.log(file.name);
+				 	console.log(file);
+				 	
+				 	parseFile.save();
+				 	console.log(parseFile._url);
+				 	console.log(parseFile._name);
+				 	console.log(parseFile);
+				 	// .then(function(){
+				 	// 	user.set('avatar', parseFile.url());	
+				 	// });
 				}
-			});
 
-			console.log('create account ends');
+				user.signUp(null, {
+					success: function (user){
+						App.Route.navigate('', {trigger:true});
+					},
+					error: function (user, error){
+						console.log(error)
+						alert('error: '+error.code+' '+error.message);
+					}
+				});	
+			});
 		}
 
 	});
