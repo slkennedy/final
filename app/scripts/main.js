@@ -10,7 +10,9 @@
 ////////////////Models/////	
 //////////////////////////
 
-	var School = Parse.Object.extend('School');
+	var School = Parse.Object.extend({
+		className: 'School'
+	});
 
 ////////////////Collections///	
 /////////////////////////////
@@ -29,7 +31,6 @@
 		},
 
 		render: function (){
-			console.log(this.collection);
 
 		},
 
@@ -37,7 +38,8 @@
 			''      :'home',
 			'create':'create',
 			'login' :'login',
-			'logout':'logout'
+			'logout':'logout',
+			'myaccount' : 'myaccount'
 		},
 
 		home: function (){
@@ -58,8 +60,12 @@
 		logout: function (){
 			$('.container').empty();
 			new App.Views.LogoutView();
-		}
+		},
 
+		myaccount: function (){
+			$('.container').empty();
+			new App.Views.MyAccountView();
+		},
 	});
 
 ////////////////Views/////	
@@ -104,7 +110,7 @@
 			
 			var query = new Parse.Query(School);
 			query.equalTo('objectId', $('.school-list').val());
-			query.first().then( function (school){
+			query.first().then(function (school){
 				var user = new Parse.User ();
 				user.set ('firstName', $('input[name="firstName"]').val());
 				user.set ('lastName', $('input[name="lastName"]').val());
@@ -117,30 +123,24 @@
 				if ($uploadFile.files.length > 0){
 					var file = $uploadFile.files[0];
 				 	var parseFile = new Parse.File(file.name, file);
-				 	console.log(file.name);
-				 	console.log(file);
 				 	
-				 	parseFile.save();
-				 	console.log(parseFile._url);
-				 	console.log(parseFile._name);
-				 	console.log(parseFile);
-				 	// .then(function(){
-				 	// 	user.set('avatar', parseFile.url());	
-				 	// });
-				}
+				 	parseFile.save().then(function (success){
+				 		user.set('avatar', parseFile._url);
 
-				user.signUp(null, {
-					success: function (user){
-						App.Route.navigate('', {trigger:true});
-					},
-					error: function (user, error){
-						console.log(error)
-						alert('error: '+error.code+' '+error.message);
-					}
-				});	
+				 		user.signUp(null, {
+							success: function (user){
+								App.Route.navigate('', {trigger:true});
+							},
+							error: function (user, error){
+								console.log(error)
+								alert('error: '+error.code+' '+error.message);
+						}
+					});	
+				} else{ 
+					user.set('avatar', 'http://s3.amazonaws.com/37assets/svn/765-default-avatar.png')
+				}
 			});
 		}
-
 	});
 
 	App.Views.LoginView = Parse.View.extend ({
@@ -156,7 +156,8 @@
 				$('input[name="email"]').val(),
 				$('input[name="password"]').val(), {
 					success: function (user){
-						App.Route.navigate('', {trigger:true});
+						console.log('logged in')
+						App.Route.navigate('myaccount', {trigger:true});
 					},
 					error: function (user, error){
 						console.log(error);
@@ -187,6 +188,24 @@
 			App.Route.navigate('login', {trigger:true});
 		}
 	});
+
+	App.Views.MyAccountView = Parse.View.extend ({
+		template: _.template($('#templates-my-account').html()),
+
+		initialize: function (){
+			console.log('initialize starts');
+			$('.container').append(this.el);
+			this.render();
+			console.log('initialize ends');
+		},
+
+		render: function (){
+			console.log('render starts');
+			this.$el.append(this.template);
+			console.log('render ends');
+		}
+
+	})
 
 ////////////////Glue Code/////	
 /////////////////////////////

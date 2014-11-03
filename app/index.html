@@ -79,7 +79,7 @@
                 <input type='file' name='avatar' class='avatar'>
                 <input type='email' name='email' placeholder='Email'>
                 <input type='password' name='password' placeholder='Password'>
-                <button class='button'>'Create Account'</button>
+                <button class='button'>Create Account</button>
             </form>
         </script>
 
@@ -88,38 +88,28 @@
             <form>
                 <input type='email' name='email' placeholder='Email'>
                 <input type='password' name='password' placeholder='Password'>
-                <button class='button'>'Create Account'</button>
+                <button class='button'>Login</button>
             </form>
         </script>
 
-        <script type="text/template" id='templates-lobby'>
+        <script type="text/template" id='templates-my-account'>
             <div class='lobby-header'>
                 <img src='../images/logo.png'>
-                <span>What up <%=firstName%></span>
+                <span>What up Username</span>
             </div>
             <div class='your-groups'>
+                <h3>Your Groups</h3>
                 <ul>
                     <li>
-                        <a href='#'>Populate with group name</a>
-                    </li>
-                    <li>
-                        <a href='#'>Populate with group name</a>
-                    </li>
-                    <li>
-                        <a href='#'>Populate with group name</a>
+                        <a href='#'>Populate with group name - filtered from groups user belongs to</a>
                     </li>
                 </ul>
             </div>
             <div class='other-groups'>
+                <h3>Possible Groups</h3>
                 <ul>
                     <li>
-                        <a href='#'>Populate with group name</a>
-                    </li>
-                    <li>
-                        <a href='#'>Populate with group name</a>
-                    </li>
-                    <li>
-                        <a href='#'>Populate with group name</a>
+                        <a href='#'>Populate with group name - filtered by school of user</a>
                     </li>
                 </ul>
             </div>
