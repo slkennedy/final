@@ -28,6 +28,7 @@
                     <li><a href='#login'>Login</a></li>
                     <li><a href='#create'>Create</a></li>
                     <li><a href='#logout'>Logout</a></li>
+                    <li><a href='#update'>Update</a></li>
                 </ul>
             </nav>
         </section>
@@ -92,30 +93,24 @@
             </form>
         </script>
 
-        <script type="text/template" id='templates-my-account'>
+        <script type="text/template" id='templates-user-page'>
             <div class='lobby-header'>
                 <img src='../images/logo.png'>
-                <span>What up Username</span>
-            </div>
-            <div class='your-groups'>
-                <h3>Your Groups</h3>
-                <ul>
-                    <li>
-                        <a href='#'>Populate with group name - filtered from groups user belongs to</a>
-                    </li>
-                </ul>
-            </div>
-            <div class='other-groups'>
-                <h3>Possible Groups</h3>
-                <ul>
-                    <li>
-                        <a href='#'>Populate with group name - filtered by school of user</a>
-                    </li>
-                </ul>
+                <span>What up <%=firstName %> </span>
+                <span class='image-container'><img class='avatar' src = '<%=avatar%>'></span>
             </div>
         </script>
 
-        <script type="text/template" id='templates-group-details'>
+        <script type='text/template' id='templates-update-account'>
+            <h3>Update Account Info</h3>
+            <form>
+                <input type='text' name='firstName' value= '<%= firstName %>'>
+                
+                <button class='button'>Update Account</button>
+            </form>
+        </script>
+
+        <script type="text/template" id='templates-course-details'>
             <div class='group-header'>
                 <span>What up <%=firstName%></span>
                 <h2 class='group-name'>INSERT GROUP NAME</h3>
@@ -164,6 +159,28 @@
                 <textarea name='post-body'>Post Details</textarea>
                 <button class='submit'>Submit Post</button>
             </form>
+        </script>
+
+        <script type="text/template" id='templates-user-courses'>
+            <div class='your-groups'>
+                <h3>Your Courses</h3>
+                <ul>
+                    <li>
+                        <a href='#'>Populate with course name - filtered from course user belongs to</a>
+                    </li>
+                </ul>
+            </div>
+        </script>
+
+        <script type="text/template" id='templates-possible-courses'>
+            <div class='other-groups'>
+                <h3>Possible Courses</h3>
+                <ul>
+                    <li>
+                        <a href='#'>Populate with course name - filtered by school of user</a>
+                    </li>
+                </ul>
+            </div>
         </script>
 
         <!-- build:js scripts/main.js -->

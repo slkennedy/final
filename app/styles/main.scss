@@ -4,6 +4,13 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/font
 @import "../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
 // endbower
 
+@mixin border-radius($radius){
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    border-radius: $radius;
+}
+
 * {
     outline: 2px solid red;
 }
@@ -31,4 +38,10 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/font
     position: absolute;
     left: 5%;
     height: 100%;
+
+    .avatar {
+        // width: 150px;
+        height: 150px;
+        @include border-radius(100%);
+    }
 }

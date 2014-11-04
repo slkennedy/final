@@ -10,8 +10,25 @@
 ////////////////Models/////	
 //////////////////////////
 
+	var User = Parse.Object.extend ('User');
+
 	var School = Parse.Object.extend({
-		className: 'School'
+		className: 'School',
+		defaults: {
+			avatar: 'http://s3.amazonaws.com/37assets/svn/765-default-avatar.png'
+		}
+	});
+
+	var Course = Parse.Object.extend ({
+		className: 'Class'
+	});
+
+	var Post = Parse.Object.extend ({
+		className: 'Post'
+	});
+
+	var Comment = Parse.Object.extend ({
+		className: 'Comment'
 	});
 
 ////////////////Collections///	
@@ -20,6 +37,30 @@
 	var Schools = Parse.Collection.extend ({
 		model: School
 	});
+
+	var Courses = Parse.Collection.extend ({
+		model: Course
+		// initialize: function(){
+		// 	this.query = 
+		// }
+	});
+
+	var Posts = Parse.Collection.extend ({
+		model: Post
+	});
+
+	var Comments = Parse.Collection.extend ({
+		model: Comment
+	});
+
+	var UsersCourses = Parse.Collection.extend ({
+		model: Course, 
+
+		// initialize: function (){
+		// 	this.query = new Parse.Query(User);
+		// 	this.query
+		// }
+	})
 
 ////////////////Router/////	
 //////////////////////////
@@ -39,7 +80,8 @@
 			'create':'create',
 			'login' :'login',
 			'logout':'logout',
-			'myaccount' : 'myaccount'
+			'userPage' : 'userPage',
+			'update' : 'update'
 		},
 
 		home: function (){
@@ -62,10 +104,31 @@
 			new App.Views.LogoutView();
 		},
 
-		myaccount: function (){
+		userPage: function (){
 			$('.container').empty();
-			new App.Views.MyAccountView();
+			// var coment = new fsdf()
+			// cmment.fet
+
+			new App.Views.UserPageView({
+				model: Parse.User.current(),
+				// user: user
+			});
+
+			new App.Views.UserCourses ({
+				model: new Course()
+			})
+
+			new App.Views.PossibleCourses ({
+				model: new Course()
+			})
 		},
+
+		update: function (){
+			$('.container').empty();
+			new App.Views.UpdateAccountView ({
+				model: Parse.User.current()
+			});
+		}
 	});
 
 ////////////////Views/////	
@@ -134,10 +197,21 @@
 							error: function (user, error){
 								console.log(error)
 								alert('error: '+error.code+' '+error.message);
-						}
+							},
+						});
 					});	
-				} else{ 
-					user.set('avatar', 'http://s3.amazonaws.com/37assets/svn/765-default-avatar.png')
+				} else {
+					user.set('avatar', 'http://s3.amazonaws.com/37assets/svn/765-default-avatar.png');
+
+					user.signUp(null, {
+						success: function (user){
+							App.Route.navigate('', {trigger:true});
+						},
+						error: function (user, error){
+							console.log(error)
+							alert('error: '+error.code+' '+error.message);
+						}
+					});
 				}
 			});
 		}
@@ -157,7 +231,7 @@
 				$('input[name="password"]').val(), {
 					success: function (user){
 						console.log('logged in')
-						App.Route.navigate('myaccount', {trigger:true});
+						App.Route.navigate('userPage', {trigger:true});
 					},
 					error: function (user, error){
 						console.log(error);
@@ -189,23 +263,80 @@
 		}
 	});
 
-	App.Views.MyAccountView = Parse.View.extend ({
-		template: _.template($('#templates-my-account').html()),
+	App.Views.UserPageView = Parse.View.extend ({
+		template: _.template($('#templates-user-page').html()),
 
-		initialize: function (){
-			console.log('initialize starts');
+		initialize: function (opts){
+			// var options = _.defaults({}, opts, {
+			// 	users: opts.users
+			// })
+
+			// opts.users
+			// this.users = options.users
+			console.log(opts.model);
+			console.log(opts);
+			console.log(opts.course);
 			$('.container').append(this.el);
 			this.render();
-			console.log('initialize ends');
 		},
 
 		render: function (){
-			console.log('render starts');
-			this.$el.append(this.template);
-			console.log('render ends');
+			this.$el.append(this.template(this.model.toJSON()));
 		}
+	});
 
-	})
+	App.Views.UserCourses = Parse.View.extend ({
+		template: _.template($('#templates-user-courses').html()),
+
+		initialize: function () {
+			$('.container').append(this.el);
+			this.render();
+		},
+
+		render: function () {
+			this.$el.append(this.template(this.model.toJSON()));
+		}
+	});
+
+	App.Views.PossibleCourses = Parse.View.extend ({
+		template: _.template($('#templates-possible-courses').html()),
+
+		initialize: function () {
+			$('.container').append(this.el);
+			this.render();
+		},
+
+		render: function () {
+			this.$el.append(this.template(this.model.toJSON()));
+		}
+	});
+
+	App.Views.UpdateAccountView = Parse.View.extend ({
+		template: _.template($('#templates-update-account').html()),
+
+		events: {
+			'click .button' : 'updateAccount'
+		},
+
+		updateAccount: function (){
+			user.get('firstName').set($('input[name="firstName"]').val());
+			// user.set ('lastName', $('input[name="lastName"]').val());
+			// user.set ('username', $('input[name="email"]').val());
+			// user.set ('email', $('input[name="email"]').val());			
+			// user.set ('password', $('input[name="password"]').val());
+
+			user.save();
+		},
+
+		initialize: function () {
+			$('.container').append(this.el);
+			this.render();
+		},
+
+		render: function (){
+			this.$el.append(this.template(this.model.toJSON()));
+		}
+	});
 
 ////////////////Glue Code/////	
 /////////////////////////////
