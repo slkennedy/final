@@ -1,12 +1,6 @@
 (function (){
 	'use strict';
 
-	window.App = {};
-
-	App.Models = {};
-	App.Views = {};
-	App.Collections = {};
-
 	App.Views.LogoutView = Parse.View.extend ({
 
 		initialize: function (){
@@ -15,7 +9,9 @@
 		},
 
 		render: function (){
-			App.Route.navigate('login', {trigger:true});
+			App.router.navigate('login', {trigger: true});
 		}
 	});
+
+
 })();

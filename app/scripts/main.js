@@ -81,7 +81,9 @@
 			'login' :'login',
 			'logout':'logout',
 			'userPage' : 'userPage',
-			'update' : 'update'
+			'update' : 'update',
+			'courses/:course' : 'courseDetails',
+			'createCourse' : 'createCourse'
 		},
 
 		home: function (){
@@ -123,12 +125,28 @@
 			})
 		},
 
+		courseDetails: function (course){
+			$('.container').empty();
+
+			var courseQuery = new Parse.Query('Course');
+			courseQuery.equalTo('courseName', Course);
+			var collection = courseQuery.collection ();
+			collection.fetch().then(function (opts){
+				new App.Views.CourseDetailsView({collection: this.collection});
+			});
+		},
+
 		update: function (){
 			$('.container').empty();
 			new App.Views.UpdateAccountView ({
 				model: Parse.User.current()
 			});
-		}
+		},
+
+		createCourse: function (){
+			$('.container').empty();
+			new App.Views.CreateCourseView();
+		},
 	});
 
 ////////////////Views/////	
@@ -335,6 +353,24 @@
 
 		render: function (){
 			this.$el.append(this.template(this.model.toJSON()));
+		}
+	});
+
+	App.Views.CreateCourseView = Parse.View.extend ({
+		template: _.template($('#templates-create-course').html()),
+
+		events: {
+			'click .button' : 'createCourse'
+		},
+
+		createCourse: function (e){
+			e.preventDefault();
+			var course = new Parse.Course();
+			course.set ('courseName', $('input[name="courseName"]').val());
+			course.set ('semester', $('input[name="semester"]').val());
+			course.set ('year', $('input[name="year"]').val());
+
+			course.save();
 		}
 	});
 

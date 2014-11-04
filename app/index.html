@@ -40,6 +40,8 @@
         <script src="bower_components/jquery/dist/jquery.js"></script>
         <script src="bower_components/underscore/underscore.js"></script>
         <script src="bower_components/backbone/backbone.js"></script>
+        <script src-='bower_components/typeahead.js/dist/bloodhound.js'></script>
+        <script src="bower_components/typeahead.js/dist/typeahead.bundle.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 
@@ -68,6 +70,8 @@
             <form>
                 <input type='text' name='firstName' placeholder='First Name'>
                 <input type='text' name='lastName' placeholder='Last Name'>
+                <div id='bloodhound'>
+                <!--// <input class='typeahead' type='text' placeholder='School Name'> -->
                 <select class='school-list'>
                         <% _.each(schools, function(school){ %>
                
@@ -77,6 +81,7 @@
                         <% }) %>
                 
                 </select>
+                </div>
                 <input type='file' name='avatar' class='avatar'>
                 <input type='email' name='email' placeholder='Email'>
                 <input type='password' name='password' placeholder='Password'>
@@ -93,6 +98,15 @@
             </form>
         </script>
 
+        <script type='text/template' id='templates-update-account'>
+            <h3>Update Account Info</h3>
+            <form>
+                <input type='text' name='firstName' value= '<%= firstName %>'>
+                
+                <button class='button'>Update Account</button>
+            </form>
+        </script>
+
         <script type="text/template" id='templates-user-page'>
             <div class='lobby-header'>
                 <img src='../images/logo.png'>
@@ -101,13 +115,27 @@
             </div>
         </script>
 
-        <script type='text/template' id='templates-update-account'>
-            <h3>Update Account Info</h3>
-            <form>
-                <input type='text' name='firstName' value= '<%= firstName %>'>
-                
-                <button class='button'>Update Account</button>
-            </form>
+        <script type="text/template" id='templates-possible-courses'>
+            <div class='other-groups'>
+                <h3>Possible Courses</h3>
+                <ul>
+                    <li>
+                        <a href='#'>Populate with course name - filtered by school of user</a>
+                    </li>
+                </ul>
+                <a href='#createCourse'>Create A Course</a>
+            </div>
+        </script>
+
+        <script type="text/template" id='templates-user-courses'>
+            <div class='your-groups'>
+                <h3>Your Courses</h3>
+                <ul>
+                    <li>
+                        <a href='#'>Populate with course name - filtered from course user belongs to</a>
+                    </li>
+                </ul>
+            </div>
         </script>
 
         <script type="text/template" id='templates-course-details'>
@@ -161,30 +189,40 @@
             </form>
         </script>
 
-        <script type="text/template" id='templates-user-courses'>
-            <div class='your-groups'>
-                <h3>Your Courses</h3>
-                <ul>
-                    <li>
-                        <a href='#'>Populate with course name - filtered from course user belongs to</a>
-                    </li>
-                </ul>
-            </div>
+        <script type="text/template" id='templates-create-course'>
+            <h1>Create Account</h1>
+            <form>
+                <input type='text' name='courseName' placeholder='Course Name'>
+                <select name='semester'>
+                    <option value='Fall'>Fall</option>
+                    <option value='Summer'>Summer</option>
+                    <option value='Spring'>Spring</option>
+                </select>
+                <select name='year'>
+                    <option value=2014>2014</option>
+                    <option value=2015>2015</option>
+                    <option value=2016>2016</option>
+                </select>
+                <button class='button'>Create Course</button>
+            </form>
         </script>
 
-        <script type="text/template" id='templates-possible-courses'>
-            <div class='other-groups'>
-                <h3>Possible Courses</h3>
-                <ul>
-                    <li>
-                        <a href='#'>Populate with course name - filtered by school of user</a>
-                    </li>
-                </ul>
-            </div>
-        </script>
+        
 
         <!-- build:js scripts/main.js -->
-        <script src="scripts/main.js"></script>
+        <script src="scripts/GlueCode.js"></script>
+        <script src="scripts/Models-Collections.js"></script>
+        <script src="scripts/CreateAccountView.js"></script>
+        <script src="scripts/CreateCourseView.js"></script>
+        <script src="scripts/HomeView.js"></script>
+        <script src="scripts/LoginView.js"></script>
+        <script src="scripts/LogoutView.js"></script>
+        <script src="scripts/PossibleCoursesView.js"></script>
+        <script src="scripts/UpdateAccountView.js"></script>
+        <script src="scripts/UserCoursesView.js"></script>
+        <script src="scripts/UserPageView.js"></script>
+        <script src="scripts/router.js"></script>
+
         <!-- endbuild -->
 </body>
 </html>

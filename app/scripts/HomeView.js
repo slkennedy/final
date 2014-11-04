@@ -1,12 +1,6 @@
 (function (){
 	'use strict';
 
-	window.App = {};
-
-	App.Models = {};
-	App.Views = {};
-	App.Collections = {};
-
 	App.Views.HomeView = Parse.View.extend ({
 		template: _.template($('#templates-home').html()),
 

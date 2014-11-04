@@ -1,12 +1,6 @@
 (function (){
 	'use strict';
 
-	window.App = {};
-
-	App.Models = {};
-	App.Views = {};
-	App.Collections = {};
-
 	App.Views.LoginView = Parse.View.extend ({
 		template: _.template($('#templates-login').html()),
 
@@ -20,7 +14,8 @@
 				$('input[name="email"]').val(),
 				$('input[name="password"]').val(), {
 					success: function (user){
-						App.Route.navigate('', {trigger:true});
+						console.log('logged in')
+						App.router.navigate('userPage', {trigger:true});
 					},
 					error: function (user, error){
 						console.log(error);
@@ -39,4 +34,6 @@
 		}
 
 	});
+
+
 })();
