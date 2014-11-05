@@ -40,7 +40,7 @@
 	});
 
 	App.Collections.Posts = Parse.Collection.extend ({
-		// model: App.Models.Post
+		model: App.Models.Post
 	});
 
 	App.Collections.Comments = Parse.Collection.extend ({

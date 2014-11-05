@@ -149,6 +149,19 @@
             <div class='course-header'>
                 <h2 class='course-name'>INSERT GROUP NAME</h3>
             </div>
+            <div class='group-action'>
+                <button class='join'>Join Us</button>
+                <button class='leave'>Leave Group</button>
+            </div>
+            <div class='new-post-header'>
+                <h2>New Post</h2>
+            </div>
+            <div class='new-post-container'>
+                <form class='new-post'> 
+                    <textarea name='post' placeholder = 'Make a New Post'></textarea>
+                    <button class='create-post'>Post</button>
+                </form>
+            </div>
             <div class='course-posts'>
                 <ul>
                     <li>
@@ -177,23 +190,19 @@
                     </li>
                 </ul>
             </div>
-            <div class='group-action'>
-                <button class='join'>Join Us</button>
-                <button class='leave'>Leave Group</button>
-                <button class-'new-post'>New Post</button>
-            </div>
+            
         </script>
 
-        <script type='text/template' id='templates-new-post'>
+        <!-- //<script type='text/template' id='templates-create-post'>
             <div class='new-post-header'>
                 <h2>New Post</h2>
             </div>
             <form class='new-post'>
-                <input type='text' name='title' placeholder='Post Title'>
-                <textarea name='post-body'>Post Details</textarea>
-                <button class='submit'>Submit Post</button>
+                <input type='text' name='postTitle' placeholder='Post Title'>
+                <textarea name='postBody'>Post Details</textarea>
+                <button class='button'>Post</button>
             </form>
-        </script>
+        </script> -->
 
         <script type="text/template" id='templates-create-course'>
             <h1>Create Account</h1>
@@ -241,6 +250,8 @@
         <script src="scripts/UserPageView.js"></script>
         <script src="scripts/router.js"></script>
         <script src="scripts/CourseDetailsView.js"></script>
+<!--         <script src="scripts/CreatePostView.js"></script>
+ -->
 
         <!-- endbuild -->
 </body>

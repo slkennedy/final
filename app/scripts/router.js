@@ -22,7 +22,7 @@
 			'userPage' : 'userPage',
 			'update' : 'update',
 			'courses/:courseId' : 'courseDetails',
-			'createCourse' : 'createCourse'
+			'createCourse' : 'createCourse',
 		},
 
 		home: function (){
@@ -84,17 +84,6 @@
 			});
 		},
 
-		// courseDetails: function (course){
-		// 	$('.container').empty();
-
-		// 	var courseQuery = new Parse.Query('Course');
-		// 	courseQuery.equalTo('courseName', Course);
-		// 	var collection = courseQuery.collection ();
-		// 	collection.fetch().then(function (opts){
-		// 		new App.Views.CourseDetailsView({collection: this.collection});
-		// 	});
-		// },
-
 		update: function (){
 			$('.container').empty();
 			$('.user-courses-container').hide();
@@ -115,9 +104,22 @@
 			$('.container').empty();
 			$('.user-courses-container').hide();
 			$('.possible-courses-container').hide();
-			new App.Views.CourseDetailsView();
-		}
+			new Parse.Query('Course').get(courseId, {
+				success: function (course){
+					new App.Views.CourseDetailsView({model: course});
+				}, 
+				error: function (course, err){
+					console.log('course not found')
+				}
+			});
+		},
 
+		// createPost: function (){
+		// 	$('.container').empty();
+		// 	$('.user-courses-container').hide();
+		// 	$('.possible-courses-container').hide();
+		// 	new App.Views.CreatePostView();
+		// },
 
 	});
 

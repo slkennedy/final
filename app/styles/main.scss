@@ -44,6 +44,10 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/font
         height: 150px;
         @include border-radius(100%);
     }
+
+    textarea {
+        resize: none;
+    }
 }
 
 .user-courses-container {
@@ -61,5 +65,9 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/font
     height: 100%;
 }
 
-
+//use odd and even selectors to make the posts avatars vary from left and right sides
+//form validation - unheap
+//image sizing on upload - unheap
+//Adjust lightness of background image 
+//form validation
 
