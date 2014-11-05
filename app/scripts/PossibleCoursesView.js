@@ -9,7 +9,6 @@
 		},
 
 		joinCourse: function (e){
-			console.log(e.target);
 			// var course = $(e.target).attr('data-value');
 
 			// var query = new Parse.Query('Course')
@@ -22,7 +21,6 @@
 
 			var relationToCourse = course.relation('members');
 			relationToCourse.add(user);
-			console.log("course 	",relationToCourse);
 
 			course.save();
 			// user.save();
@@ -32,7 +30,7 @@
 		},
 
 		initialize: function () {
-			$('.container').append(this.el);
+			$('.possible-courses-container').append(this.el);
 			this.render();
 
 		},

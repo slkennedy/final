@@ -34,10 +34,10 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/font
 }
 
 .container {
-    width: 95%;
-    position: absolute;
-    left: 5%;
+    width: 100%;
     height: 100%;
+    left: 5%;
+    position: relative;
 
     .avatar {
         // width: 150px;
@@ -45,3 +45,21 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/font
         @include border-radius(100%);
     }
 }
+
+.user-courses-container {
+    width: 100%;
+    position: relative;
+    left: 5%;
+    height: 100%;
+    margin-top: 0;
+}
+
+.possible-courses-container {
+    width: 100%;
+    position: relative;
+    left: 5%;
+    height: 100%;
+}
+
+
+

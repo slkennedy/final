@@ -5,7 +5,7 @@
 		template: _.template($('#templates-user-courses').html()),
 
 		initialize: function () {
-			$('.container').append(this.el);
+			$('.user-courses-container').append(this.el);
 			this.render();
 		},
 

@@ -27,26 +27,38 @@
 
 		home: function (){
 			$('.container').empty();
+			$('.user-courses-container').hide();
+			$('.possible-courses-container').hide();
 			new App.Views.HomeView();
 		},
 
 		create: function (){
 			$('.container').empty();
+			$('.user-courses-container').hide();
+			$('.possible-courses-container').hide();
 			new App.Views.CreateAccountView();
 		},
 
 		login: function (){
 			$('.container').empty(),
+			$('.user-courses-container').hide();
+			$('.possible-courses-container').hide();
 			new App.Views.LoginView();
 		},
 
 		logout: function (){
 			$('.container').empty();
+			$('.user-courses-container').hide();
+			$('.possible-courses-container').hide();
 			new App.Views.LogoutView();
 		},
 
 		userPage: function (){
 			$('.container').empty();
+			$('.user-courses-container').empty();
+			$('.possible-courses-container').empty();
+			$('.user-courses-container').show();
+			$('.possible-courses-container').show();
 			// var coment = new fsdf()
 			// cmment.fet
 
@@ -85,6 +97,8 @@
 
 		update: function (){
 			$('.container').empty();
+			$('.user-courses-container').hide();
+			$('.possible-courses-container').hide();
 			new App.Views.UpdateAccountView ({
 				model: Parse.User.current()
 			});
@@ -92,11 +106,15 @@
 
 		createCourse: function (){
 			$('.container').empty();
+			$('.user-courses-container').hide();
+			$('.possible-courses-container').hide();
 			new App.Views.CreateCourseView();
 		},
 
 		courseDetails: function(courseId) {
 			$('.container').empty();
+			$('.user-courses-container').hide();
+			$('.possible-courses-container').hide();
 			new App.Views.CourseDetailsView();
 		}
 
