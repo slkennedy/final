@@ -19,7 +19,6 @@
 		},
 
 		render: function (){
-			console.log(this);
 			this.$el.append(this.template(this.model.toJSON()));
 		}
 	});

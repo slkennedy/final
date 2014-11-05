@@ -33,9 +33,9 @@
 	});
 
 	App.Collections.Courses = Parse.Collection.extend ({
-		// model: Course
+		model: App.Models.Course
 		// initialize: function(){
-		// 	this.query = 
+		// 	this.query = new Parse.Query('Courses')
 		// }
 	});
 
@@ -48,12 +48,22 @@
 	});
 
 	App.Collections.UsersCourses = Parse.Collection.extend ({
-		// model: Course, 
+		model: App.Models.Course,
 
-		// initialize: function (){
-		// 	this.query = new Parse.Query(User);
-		// 	this.query
-		// }
+		initialize: function (){
+			this.query = new Parse.Query(this.model)
+				.equalTo('members', Parse.User.current());
+		}
+	});
+
+	App.Collections.PossibleCourses = Parse.Collection.extend ({
+		model: App.Models.Course,
+
+		initialize: function (){
+			this.query = new Parse.Query(this.model)
+				.notEqualTo('members', Parse.User.current());
+		}
+
 	});
 
 })();

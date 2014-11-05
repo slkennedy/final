@@ -119,9 +119,12 @@
             <div class='other-groups'>
                 <h3>Possible Courses</h3>
                 <ul>
-                    <li>
-                        <a href='#'>Populate with course name - filtered by school of user</a>
-                    </li>
+                    <% _.each(courses, function(course) { %>
+                        <li>
+                            <%= course.courseName %>, <%= course.semester %>, <%= course.year %>
+                            <button class='button' data-value= '<%= course.objectId %>'>+</button>
+                        </li>
+                    <% }) %>
                 </ul>
                 <a href='#createCourse'>Create A Course</a>
             </div>

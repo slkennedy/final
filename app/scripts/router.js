@@ -50,16 +50,25 @@
 			// var coment = new fsdf()
 			// cmment.fet
 
+
 			new App.Views.UserPageView({
 				model: Parse.User.current()
 				// user: user
 			});
 
-			new App.Views.UserCourses ({
 
+			var usercourses = new App.Collections.Courses()
+			usercourses.fetch().then(function(){
+				new App.Views.UserCourses ({
+
+				});
 			});
 
-			new App.Views.PossibleCourses ({
+			var possiblecourses = new App.Collections.PossibleCourses()
+			possiblecourses.fetch().then(function(){
+				new App.Views.PossibleCourses ({
+					collection: possiblecourses
+				});	
 			});
 		},
 
