@@ -51,8 +51,11 @@
 		model: App.Models.Course,
 
 		initialize: function (){
-			this.query = new Parse.Query(this.model)
-				.equalTo('members', Parse.User.current());
+			// this.query = Parse.User.current().relation('courses').query();
+            this.query = (new Parse.Query("Course")).equalTo('members', Parse.User.current());
+
+			// this.query = (new Parse.Query(this.model))
+			// 	.containedIn('members', Parse.User.current());
 		}
 	});
 
@@ -60,8 +63,10 @@
 		model: App.Models.Course,
 
 		initialize: function (){
-			this.query = new Parse.Query(this.model)
-				.notEqualTo('members', Parse.User.current());
+            this.query = (new Parse.Query("Course")).notEqualTo('members', Parse.User.current());
+
+			// this.query = (new Parse.Query(this.model))
+			// 	.notContainedIn('members', Parse.User.current());
 		}
 
 	});
