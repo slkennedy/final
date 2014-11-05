@@ -21,7 +21,7 @@
 			'logout':'logout',
 			'userPage' : 'userPage',
 			'update' : 'update',
-			'courses/:course' : 'courseDetails',
+			'courses/:courseId' : 'courseDetails',
 			'createCourse' : 'createCourse'
 		},
 
@@ -57,10 +57,10 @@
 			});
 
 
-			var usercourses = new App.Collections.Courses()
+			var usercourses = new App.Collections.UsersCourses()
 			usercourses.fetch().then(function(){
 				new App.Views.UserCourses ({
-
+					collection: usercourses
 				});
 			});
 
@@ -72,16 +72,16 @@
 			});
 		},
 
-		courseDetails: function (course){
-			$('.container').empty();
+		// courseDetails: function (course){
+		// 	$('.container').empty();
 
-			var courseQuery = new Parse.Query('Course');
-			courseQuery.equalTo('courseName', Course);
-			var collection = courseQuery.collection ();
-			collection.fetch().then(function (opts){
-				new App.Views.CourseDetailsView({collection: this.collection});
-			});
-		},
+		// 	var courseQuery = new Parse.Query('Course');
+		// 	courseQuery.equalTo('courseName', Course);
+		// 	var collection = courseQuery.collection ();
+		// 	collection.fetch().then(function (opts){
+		// 		new App.Views.CourseDetailsView({collection: this.collection});
+		// 	});
+		// },
 
 		update: function (){
 			$('.container').empty();
@@ -94,6 +94,13 @@
 			$('.container').empty();
 			new App.Views.CreateCourseView();
 		},
+
+		courseDetails: function(courseId) {
+			$('.container').empty();
+			new App.Views.CourseDetailsView();
+		}
+
+
 	});
 
 })();

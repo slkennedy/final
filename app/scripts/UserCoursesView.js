@@ -10,9 +10,8 @@
 		},
 
 		render: function () {
-			this.$el.append(this.template);
+			this.$el.append(this.template ({courses: this.collection.toJSON()}));
 		}
 	});
-
 
 })();

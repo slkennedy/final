@@ -116,12 +116,12 @@
         </script>
 
         <script type="text/template" id='templates-possible-courses'>
-            <div class='other-groups'>
+            <div class='other-courses'>
                 <h3>Possible Courses</h3>
                 <ul>
                     <% _.each(courses, function(course) { %>
                         <li>
-                            <%= course.courseName %>, <%= course.semester %>, <%= course.year %>
+                            <a href='#'><%= course.courseName %>, <%= course.semester %>, <%= course.year %></a>
                             <button class='button' data-value= '<%= course.objectId %>'>+</button>
                         </li>
                     <% }) %>
@@ -131,22 +131,23 @@
         </script>
 
         <script type="text/template" id='templates-user-courses'>
-            <div class='your-groups'>
+            <div class='your-courses'>
                 <h3>Your Courses</h3>
                 <ul>
-                    <li>
-                        <a href='#'>Populate with course name - filtered from course user belongs to</a>
-                    </li>
+                    <% _.each(courses, function(course) { %>
+                        <li>
+                            <a href='#/courses/<%=course.objectId%>'><%= course.courseName %>, <%= course.semester %>, <%= course.year %></a>
+                        </li>
+                    <% }) %>
                 </ul>
             </div>
         </script>
 
         <script type="text/template" id='templates-course-details'>
-            <div class='group-header'>
-                <span>What up <%=firstName%></span>
-                <h2 class='group-name'>INSERT GROUP NAME</h3>
+            <div class='course-header'>
+                <h2 class='course-name'>INSERT GROUP NAME</h3>
             </div>
-            <div class='group-posts'>
+            <div class='course-posts'>
                 <ul>
                     <li>
                         <a href='#'>
@@ -237,6 +238,7 @@
         <script src="scripts/UserCoursesView.js"></script>
         <script src="scripts/UserPageView.js"></script>
         <script src="scripts/router.js"></script>
+        <script src="scripts/CourseDetailsView.js"></script>
 
         <!-- endbuild -->
 </body>
