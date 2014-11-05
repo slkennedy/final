@@ -32,7 +32,7 @@
 
 		create: function (){
 			$('.container').empty();
-			new App.Views.CreateAccountView({collection: 'App.Collections.Schools'});
+			new App.Views.CreateAccountView();
 		},
 
 		login: function (){
@@ -51,9 +51,7 @@
 			// cmment.fet
 
 			new App.Views.UserPageView({
-			console.log(Parse.User.current());
-
-				model: Parse.User.current(),
+				model: Parse.User.current()
 				// user: user
 			});
 

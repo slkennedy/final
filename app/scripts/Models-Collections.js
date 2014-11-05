@@ -14,7 +14,7 @@
 	});
 
 	App.Models.Course = Parse.Object.extend ({
-		className: 'Class'
+		className: 'Course'
 	});
 
 	App.Models.Post = Parse.Object.extend ({
