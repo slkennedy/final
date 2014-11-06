@@ -2,6 +2,8 @@
 	'use strict';
 
 	App.Views.PossibleCourses = Parse.View.extend ({
+		tagName: 'li',
+		className: 'possible-course-items',
 		template: _.template($('#templates-possible-courses').html()),
 
 		events: {
@@ -14,7 +16,7 @@
 			// var query = new Parse.Query('Course')
 			// 	.equalTo('objectId', course);
 			// query.first().then(function(course){
-		    var course = this.collection.get($(e.target).attr('data-value'));
+		    var course = this.model;
 			var user = Parse.User.current();
 			// var relationToUser = user.relation('courses');
 			// relationToUser.add(course);
@@ -24,20 +26,18 @@
 
 			course.save();
 			// user.save();
-
 			// });
-
+			this.remove();
+			this.collection.add(this.model);
 		},
 
 		initialize: function () {
-			$('.possible-courses-container').append(this.el);
+			$('.possible-course-list').append(this.el);
 			this.render();
-
 		},
 
 		render: function () {
-			console.log(this.collection);
-			this.$el.append(this.template({courses: this.collection.toJSON()}));
+			this.$el.append(this.template(this.model.toJSON()));
 		}
 	});
 

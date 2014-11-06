@@ -34,6 +34,10 @@
         </section>
         <section class= 'container'></section>
         <section class= 'user-courses-container'></section>
+        <section class= 'possible-course-header'>
+            <h3>Possible Courses</h3>
+            <a href='#createCourse'>Create A Course</a>
+        </section>
         <section class= 'possible-courses-container'></section>
 
         
@@ -118,17 +122,9 @@
         </script>
 
         <script type="text/template" id='templates-possible-courses'>
-            <div class='other-courses'>
-                <h3>Possible Courses</h3>
-                <ul>
-                    <% _.each(courses, function(course) { %>
-                        <li>
-                            <a href='#'><%= course.courseName %>, <%= course.semester %>, <%= course.year %></a>
-                            <button class='button' data-value= '<%= course.objectId %>'>+</button>
-                        </li>
-                    <% }) %>
-                </ul>
-                <a href='#createCourse'>Create A Course</a>
+            <div class='possible-courses'>
+                <a href='#'><%= courseName %>, <%= semester %>, <%= year %></a>
+                <button class='button'>+</button>
             </div>
         </script>
 
@@ -204,6 +200,13 @@
             </form>
         </script> -->
 
+        <script type='text/template' id='templates-post-details'>
+            <h1>HERE ARE DETAILS</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac metus nisi. Fusce quis dui.</p>
+            <p>COMMENTS</p>
+            <textarea name='comment' placeholder='Comment on this...'></textarea>
+            <button class='button'>Comment</button>
+        </script>
         <script type="text/template" id='templates-create-course'>
             <h1>Create Account</h1>
             <form>
@@ -250,8 +253,10 @@
         <script src="scripts/UserPageView.js"></script>
         <script src="scripts/router.js"></script>
         <script src="scripts/CourseDetailsView.js"></script>
-<!--         <script src="scripts/CreatePostView.js"></script>
- -->
+        <script src="scripts/PostDetailsView.js"></script>
+        <script src="scripts/PossibleCourseList.js"></script>
+
+
 
         <!-- endbuild -->
 </body>

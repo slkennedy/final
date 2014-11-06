@@ -16,14 +16,13 @@
 			post.set ('postAuthor', Parse.User.current());
 			
 
-			var relation = course.relation('posts');
-			relation.add('post');
-
-			course.save();
-
 			post.save({
 				success: function (post){
 					console.log('success', post)
+					var relation = course.relation('posts');
+					relation.add(post);
+					course.save();
+
 				},
 				error: function (post, err){
 					console.log('boo', err)
@@ -34,7 +33,6 @@
 
 		initialize: function () {
 			$('.container').append(this.el);
-			$('.new-post-container').hide();
 			new App.Models.Course();
 			this.render();
 		},

@@ -7,6 +7,7 @@
 		initialize: function () {
 			$('.user-courses-container').append(this.el);
 			this.render();
+			this.collection.on('change', this.render, this);
 		},
 
 		render: function () {
