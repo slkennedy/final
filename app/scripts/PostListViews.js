@@ -14,16 +14,16 @@
 		},
 
 		render: function () {
+			var self = this;
 			var course = this.model;
-			console.log(course);
-			console.log(this.model.attributes);
-			console.log(this.model.get('posts'));
-			window.course = this.model;
-			// course.get('posts').fetch()
-			// 	.then(function (post) {
-			// 		console.log(post);
-			// 		// collection.each(_.bind(this.renderChildren, this));
-			// });
+
+			var relation = course.relation('posts');
+			var collection = relation.query().collection()
+			collection.fetch().then(function (){
+				console.log(collection);
+				collection.each(_.bind(self.renderChildren, self));
+			});
+
 		},
 
 		renderChildren: function (post) {
@@ -44,9 +44,8 @@
 		},
 
 		render: function () {
-			console.log(this.model);
-;			this.$el.append(this.template({model: this.model}));
+			this.$el.append(this.template(this.model.toJSON()));
 		}
-	})
+	});
 
 })();

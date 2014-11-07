@@ -27,7 +27,8 @@
 			e.preventDefault();
 			var user = Parse.User.current();
 			var course = this.model;
-			course.relation.remove('members', user);
+			course.relation('members').remove(user);
+			course.save();
 		},
 
 		createPost: function (e){

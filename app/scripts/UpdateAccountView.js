@@ -5,17 +5,24 @@
 		template: _.template($('#templates-update-account').html()),
 
 		events: {
-			'click .button' : 'updateAccount'
+			'click .update-account' : 'updateAccount'
 		},
 
-		updateAccount: function (){
-			user.get('firstName').set($('input[name="firstName"]').val());
-			// user.set ('lastName', $('input[name="lastName"]').val());
-			// user.set ('username', $('input[name="email"]').val());
-			// user.set ('email', $('input[name="email"]').val());			
-			// user.set ('password', $('input[name="password"]').val());
+		updateAccount: function (e){
+			e.preventDefault();
+			var firstName = $('input[name="firstName"]').val();
+			var lastName = $('input[name="lastName"]').val();
+			var email = $('input[name="email"]').val();
+			var password = $('input[name="password"]').val();
 
-			user.save();
+			this.model.set('firstName', firstName);
+			this.model.set('lastName', lastName);
+			this.model.set('email', email);
+			this.model.set('password', password);
+
+			this.model.save().then(function {
+				App.router.navigate('userPage', {trigger:true});
+			}
 		},
 
 		initialize: function () {
@@ -24,7 +31,7 @@
 		},
 
 		render: function (){
-			// this.$el.append(this.template(this.model.toJSON()));
+			this.$el.append(this.template(this.model.toJSON()));
 		}
 	});
 

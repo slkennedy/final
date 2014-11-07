@@ -46,8 +46,10 @@
         <script src="bower_components/jquery/dist/jquery.js"></script>
         <script src="bower_components/underscore/underscore.js"></script>
         <script src="bower_components/backbone/backbone.js"></script>
-        <script src-='bower_components/typeahead.js/dist/bloodhound.js'></script>
         <script src="bower_components/typeahead.js/dist/typeahead.bundle.js"></script>
+        <script src="bower_components/typeahead.js/dist/typeahead.jquery.js"></script>
+        <script src-='bower_components/typeahead.js/dist/bloodhound.js'></script>
+        
         <!-- endbower -->
         <!-- endbuild -->
 
@@ -103,16 +105,7 @@
                 <input type='text' name='firstName' placeholder='First Name'>
                 <input type='text' name='lastName' placeholder='Last Name'>
                 <div id='bloodhound'>
-                <!--// <input class='typeahead' type='text' placeholder='School Name'> -->
-                <select class='school-list'>
-                        <% _.each(schools, function(school){ %>
-               
-                    <option value='<%= school.objectId %>'> 
-                            <%=school.Name%>: <%=school.City%>, <%=school.State%>
-                    </option>
-                        <% }) %>
-                
-                </select>
+                <input class='typeahead' type='text' placeholder='School Name'>
                 </div>
                 <input type='file' name='avatar' class='avatar'>
                 <input type='email' name='email' placeholder='Email'>
@@ -125,8 +118,11 @@
             <h3>Update Account Info</h3>
             <form>
                 <input type='text' name='firstName' value= '<%= firstName %>'>
-                
-                <button class='button'>Update Account</button>
+                <input type='text' name='lastName' value= '<%= lastName %>'>
+                <input type='text' name='email' value= '<%= email %>'>
+                <input type='password' name='password' placeholder='Password'>
+
+                <button class='update-account'>Update Account</button>
             </form>
         </script>
 
@@ -200,7 +196,7 @@
 
         <script type='text/template' id='templates-post-list'>
             <a href='#'>
-                <%= this.posts %>, <%= this.semester %>, <%= this.year %>
+                <%= postContent %>
             </a>
         </script>
 
