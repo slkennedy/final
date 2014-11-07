@@ -19,13 +19,14 @@
 
 		render: function (){
 			var self = this;
-			var source = (function (query, cb) {
-				console.log(self.collection.toJSON());
-				cb(self.collection.toJSON());
-			})();
 
-			$('.typeahead').typeahead({}, {source: source, name: 'cool'});
 			this.$el.html(this.template({schools: this.collection.toJSON()}));
+			var source = function (query, cb) {
+				cb(self.collection.toJSON());
+			};
+
+			$('.typeahead').typeahead({}, {source: source, name: 'cool', displayKey: 'Name'});
+			
 		},
 
 		createAccount: function (e){

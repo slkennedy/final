@@ -20,9 +20,9 @@
 			this.model.set('email', email);
 			this.model.set('password', password);
 
-			this.model.save().then(function {
+			this.model.save().then(function() {
 				App.router.navigate('userPage', {trigger:true});
-			}
+			});
 		},
 
 		initialize: function () {

@@ -39,19 +39,21 @@
 			post.set ('postAuthor', Parse.User.current());
 			
 
-			post.save({
-				success: function (post){
+			post.save().then(function () {
+				// success: function (post){
+					// var collection = new App.Collections.Posts();
 					console.log('success', post)
+					// new App.Views.PostListViews();
+
 					var relation = course.relation('posts');
 					relation.add(post);
 					course.save();
-
-				},
-				error: function (post, err){
-					console.log('boo', err)
-				}
+					
+				// },
+				// error: function (post, err){
+				// 	console.log('boo', err)
+				// }
 			});
-
 		},
 
 		initialize: function () {

@@ -9,27 +9,33 @@
 		initialize: function () {
 			$('.post-list-container').append(this.el);
 			new App.Models.Course();
-			this.render();
+			
+			var course = this.model;
+			var relation = course.relation('posts');
+			this.collection = relation.query().collection();
+			console.log(this.collection);
+			this.collection.on('add', this.render, this);
 
+			this.render();
 		},
 
 		render: function () {
 			var self = this;
 			var course = this.model;
-
-			var relation = course.relation('posts');
-			var collection = relation.query().collection()
-			collection.fetch().then(function (){
-				console.log(collection);
-				collection.each(_.bind(self.renderChildren, self));
+			this.$el.empty();
+			// var relation = course.relation('posts');
+			// var collection = relation.query().collection()
+			this.collection.fetch().then(function (){
+				self.collection.each(_.bind(self.renderChildren, self));
 			});
 
 		},
 
 		renderChildren: function (post) {
 			new App.Views.PostsView ({
-				model: post
+				model: post,
 			});
+
 		}
 	});	
 
@@ -44,6 +50,7 @@
 		},
 
 		render: function () {
+			console.log('hey');
 			this.$el.append(this.template(this.model.toJSON()));
 		}
 	});

@@ -17,8 +17,6 @@
 			this.collection.each(_.bind(this.renderChildren, this));
 		},
 
-		//remove children from the view in render
-
 		renderChildren: function (course) {
 			new App.Views.UserCourseItems({
 				model: course

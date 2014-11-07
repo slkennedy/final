@@ -135,8 +135,13 @@
 
 			new Parse.Query('Course').get(courseId, {
 				success: function (course){
-					new App.Views.CourseDetailsView({model: course});
-					new App.Views.PostListView({model: course});
+					console.log(course);
+					new App.Views.CourseDetailsView({
+						model: course
+					});
+					new App.Views.PostListView({
+						model: course
+					});
 				}, 
 				error: function (course, err){
 					console.log('course not found')
@@ -149,7 +154,7 @@
 			$('.user-courses-container').hide();
 			$('.possible-course-header').hide();
 			$('.possible-courses-container').hide();
-			
+
 			new Parse.Query('Post').get(postId, {
 				success: function (post){
 					new App.Views.PostDetailsView({model: post});
