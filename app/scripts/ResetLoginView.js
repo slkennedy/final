@@ -1,16 +1,11 @@
 (function (){
 	'use strict';
 
-	App.Views.LoginView = Parse.View.extend ({
-		template: _.template($('#templates-login').html()),
+	App.Views.ResetLoginView = Parse.View.extend ({
+		template: _.template($('#templates-reset-login').html()),
 
 		events: {
-			'click .login-button': 'login',
-			'click .forgot-password' : 'forgotPassword',
-		},
-
-		forgotPassword: function () {
-			new App.Views.ForgotPasswordView ();
+			'click .login-button' : 'login'
 		},
 
 		login: function (e) {
@@ -29,16 +24,15 @@
 			);
 		},
 
-		initialize: function (){
+		initialize: function () {
 			$('.container').append(this.el);
 			this.render();
 		},
 
-		render: function (){
+		render: function () {
 			this.$el.append(this.template);
 		}
 
 	});
-
 
 })();

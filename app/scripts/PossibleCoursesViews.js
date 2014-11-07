@@ -1,6 +1,28 @@
 (function (){
 	'use strict';
 
+	App.Views.PossibleCourseList = Parse.View.extend ({
+		tagName: 'ul',
+		className: 'possible-course-list',
+	
+		initialize: function () {
+			$('.possible-courses-container').append(this.el);
+			this.render();	
+		},
+
+		render: function () {
+			this.collection.each(_.bind(this.renderChildren, this));
+		},
+
+		renderChildren: function (course) {
+			new App.Views.PossibleCourses ({
+				collection: this.collection,
+				model: course,
+			});
+		}
+
+	});
+
 	App.Views.PossibleCourses = Parse.View.extend ({
 		tagName: 'li',
 		className: 'possible-course-items',
@@ -10,25 +32,18 @@
 			'click .button' : 'joinCourse'
 		},
 
-		joinCourse: function (e){
-			// var course = $(e.target).attr('data-value');
-
-			// var query = new Parse.Query('Course')
-			// 	.equalTo('objectId', course);
-			// query.first().then(function(course){
+		joinCourse: function (e){	
+			e.preventDefault(); 	
 		    var course = this.model;
 			var user = Parse.User.current();
-			// var relationToUser = user.relation('courses');
-			// relationToUser.add(course);
 
 			var relationToCourse = course.relation('members');
 			relationToCourse.add(user);
 
 			course.save();
-			// user.save();
-			// });
+			
+			this.collection.remove(course);
 			this.remove();
-			this.collection.add(this.model);
 		},
 
 		initialize: function () {

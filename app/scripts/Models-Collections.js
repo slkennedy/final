@@ -71,4 +71,9 @@
 
 	});
 
+	App.Collections.PostList = Parse.Collection.extend ({
+		model: App.Models.Course, 
+
+	})
+
 })();

@@ -5,7 +5,29 @@
 		template: _.template($('#templates-course-details').html()),
 
 		events: {
-			'click .create-post' : 'createPost'
+			'click .create-post' : 'createPost',
+			'click .drop-course' : 'dropCourse',
+			'click .join-course' : 'joinCourse'
+
+		},
+
+		joinCourse: function (e){	
+			e.preventDefault(); 
+			console.log(this.model);	
+		    var course = this.model;
+			var user = Parse.User.current();
+
+			var relationToCourse = course.relation('members');
+			relationToCourse.add(user);
+
+			course.save();
+		},
+
+		dropCourse: function (e) {
+			e.preventDefault();
+			var user = Parse.User.current();
+			var course = this.model;
+			course.relation.remove('members', user);
 		},
 
 		createPost: function (e){
@@ -32,14 +54,14 @@
 		},
 
 		initialize: function () {
-			$('.container').append(this.el);
+			$('.container').prepend(this.el);
 			new App.Models.Course();
 			this.render();
 		},
 
 
 		render: function () {
-			this.$el.append(this.template({model: this.model.toJSON()}));
+			this.$el.append(this.template(this.model.toJSON()));
 		}
 	});	
 

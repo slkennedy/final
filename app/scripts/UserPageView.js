@@ -5,15 +5,7 @@
 		template: _.template($('#templates-user-page').html()),
 
 		initialize: function (){
-			// var options = _.defaults({}, opts, {
-			// 	users: opts.users
-			// })
-
-			// opts.users
-			// this.users = options.users
-			// console.log(opts.model);
-			// console.log(opts);
-			// console.log(opts.course);
+		
 			$('.container').append(this.el);
 			this.render();
 		},

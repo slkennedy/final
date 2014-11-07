@@ -9,16 +9,16 @@
 		},
 
 		initialize: function (){
-			var self = this;
-			this.collection = new App.Collections.Schools();
-			this.collection.fetch().then( function (){
-				$('.container').append(self.el);
-				self.render();
-			});
+			$('.container').append(this.el);
+			this.render();
 		},
 
 		render: function (){
-			this.$el.append(this.template({schools: this.collection.toJSON()}));
+			var self = this;
+			Parse.User.current().get('school').fetch()
+				.then(function(school){
+					self.$el.append(self.template(school.toJSON()))
+				})
 		},
 
 		createCourse: function (e){

@@ -71,6 +71,32 @@
             </section>
         </script>
 
+        <script type='text/template' id='templates-login'>
+            <h1>Login</h1>
+            <form>
+                <input type='email' name='email' placeholder='Email'>
+                <input type='password' name='password' placeholder='Password'>
+                <button class='login-button'>Login</button>
+                <button class='forgot-password'>Forgot Password</button>
+            </form>
+            <div class='request-password'></div>
+        </script>
+
+        <script type="text/template" id='templates-forgot-pass'>
+            <input type='email' name='emailPassword' placeholder='Email'>
+            <button class='reset-password'>Reset Password</button>
+        </script>
+
+        <script type='text/template' id='templates-reset-login'>
+            <h1>So you forgot your password...</h1>
+            <p>No problem. You&#39;ll receive an email shortly with a reset link.  Take care of that and come back to this page to login... we&#39;ll wait.</p>
+            <form>
+                <input type='email' name='email' placeholder='Email'>
+                <input type='password' name='password' placeholder='Password'>
+                <button class='login-button'>Login</button>
+            </form>
+        </script>
+
         <script type='text/template' id='templates-create-account'>
             <h1>Create Account</h1>
             <form>
@@ -95,15 +121,6 @@
             </form>
         </script>
 
-        <script type='text/template' id='templates-login'>
-            <h1>Login</h1>
-            <form>
-                <input type='email' name='email' placeholder='Email'>
-                <input type='password' name='password' placeholder='Password'>
-                <button class='button'>Login</button>
-            </form>
-        </script>
-
         <script type='text/template' id='templates-update-account'>
             <h3>Update Account Info</h3>
             <form>
@@ -123,92 +140,24 @@
 
         <script type="text/template" id='templates-possible-courses'>
             <div class='possible-courses'>
-                <a href='#'><%= courseName %>, <%= semester %>, <%= year %></a>
+                <a href='#/courses/<%=objectId%>'><%= courseName %>, <%= semester %>, <%= year %></a>
                 <button class='button'>+</button>
             </div>
         </script>
+        
+        <script type="text/template" id='templates-user-course-list'>
+            <h3>Your Courses</h3>
+            <div class='user-courses-container'></div>
+        </script>
 
         <script type="text/template" id='templates-user-courses'>
-            <div class='your-courses'>
-                <h3>Your Courses</h3>
-                <ul>
-                    <% _.each(courses, function(course) { %>
-                        <li>
-                            <a href='#/courses/<%=course.objectId%>'><%= course.courseName %>, <%= course.semester %>, <%= course.year %></a>
-                        </li>
-                    <% }) %>
-                </ul>
-            </div>
+            <a href='#/courses/<%=objectId%>'>
+                <%= courseName %>, <%= semester %>, <%= year %>
+            </a>
         </script>
 
-        <script type="text/template" id='templates-course-details'>
-            <div class='course-header'>
-                <h2 class='course-name'>INSERT GROUP NAME</h3>
-            </div>
-            <div class='group-action'>
-                <button class='join'>Join Us</button>
-                <button class='leave'>Leave Group</button>
-            </div>
-            <div class='new-post-header'>
-                <h2>New Post</h2>
-            </div>
-            <div class='new-post-container'>
-                <form class='new-post'> 
-                    <textarea name='post' placeholder = 'Make a New Post'></textarea>
-                    <button class='create-post'>Post</button>
-                </form>
-            </div>
-            <div class='course-posts'>
-                <ul>
-                    <li>
-                        <a href='#'>
-                            <img src='http://www.fillmurray.com/200/200'>
-                            <h3>INSERT TITLE</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mollis nibh sit amet libero fermentum condimentum.
-                            </p>   
-                        </a>
-                    </li>
-                    <li>
-                        <a href='#'>
-                            <img src='http://www.fillmurray.com/200/200'>
-                            <h3>INSERT TITLE</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mollis nibh sit amet libero fermentum condimentum.
-                            </p>   
-                        </a>
-                    </li>
-                    <li>
-                        <a href='#'>
-                            <img src='http://www.fillmurray.com/200/200'>
-                            <h3>INSERT TITLE</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mollis nibh sit amet libero fermentum condimentum.
-                            </p>   
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            
-        </script>
-
-        <!-- //<script type='text/template' id='templates-create-post'>
-            <div class='new-post-header'>
-                <h2>New Post</h2>
-            </div>
-            <form class='new-post'>
-                <input type='text' name='postTitle' placeholder='Post Title'>
-                <textarea name='postBody'>Post Details</textarea>
-                <button class='button'>Post</button>
-            </form>
-        </script> -->
-
-        <script type='text/template' id='templates-post-details'>
-            <h1>HERE ARE DETAILS</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac metus nisi. Fusce quis dui.</p>
-            <p>COMMENTS</p>
-            <textarea name='comment' placeholder='Comment on this...'></textarea>
-            <button class='button'>Comment</button>
-        </script>
         <script type="text/template" id='templates-create-course'>
-            <h1>Create Account</h1>
+            <h1>Create Course</h1>
             <form>
                 <input type='text' name='courseName' placeholder='Course Name'>
 
@@ -224,18 +173,49 @@
                     <option value=2016>2016</option>
                 </select>
 
-                <select class='school-list'>
-                    <% _.each(schools, function(school){ %>
-
-                    <option value='<%= school.objectId %>'> 
-                        <%=school.Name%>: <%=school.City%>, <%=school.State%>
-                    </option>
-                        <% }) %>
-                
-                </select>
+                <div><%=Name%></div>
                 <button class='button'>Create Course</button>
             </form>
         </script>
+
+        <script type="text/template" id='templates-course-details'>
+            <div class='course-header'>
+                <h2 class='course-name'><%= courseName %></h3>
+            </div>
+            <div class='course-action'>
+                <button class='join-course'>Join Us</button>
+                <button class='drop-course'>Drop Course</button>
+            </div>
+            <div class='new-post-header'>
+                <h2>New Post</h2>
+            </div>
+            <div class='new-post-container'>
+                <form class='new-post'> 
+                    <textarea name='post' placeholder = 'Make a New Post'></textarea>
+                    <button class='create-post'>Post</button>
+                </form>
+            </div>
+            <div class='post-list-container'></div>
+        </script>
+
+        <script type='text/template' id='templates-post-list'>
+            <a href='#'>
+                <%= this.posts %>, <%= this.semester %>, <%= this.year %>
+            </a>
+        </script>
+
+        <script type='text/template' id='templates-post-details'>
+            <h1>Post</h1>
+            <p><%= model.postContent %></p>
+            <span><%= model.postAuthor %></span>
+            <p>COMMENTS</p>
+            <p>Check out this comment someone left...blah blah blah</p>
+            <h3>Leave a Comment</h3>
+            <textarea name='comment' placeholder='Comment on this...'></textarea>
+            <button class='button'>Comment</button>
+        </script>
+
+
 
         
 
@@ -247,14 +227,16 @@
         <script src="scripts/HomeView.js"></script>
         <script src="scripts/LoginView.js"></script>
         <script src="scripts/LogoutView.js"></script>
-        <script src="scripts/PossibleCoursesView.js"></script>
         <script src="scripts/UpdateAccountView.js"></script>
         <script src="scripts/UserCoursesView.js"></script>
         <script src="scripts/UserPageView.js"></script>
         <script src="scripts/router.js"></script>
         <script src="scripts/CourseDetailsView.js"></script>
         <script src="scripts/PostDetailsView.js"></script>
-        <script src="scripts/PossibleCourseList.js"></script>
+        <script src="scripts/PossibleCoursesViews.js"></script>
+        <script src="scripts/PostListViews.js"></script>
+        <script src="scripts/ForgotPasswordView.js"></script>
+        <script src="scripts/ResetLoginView.js"></script>
 
 
 

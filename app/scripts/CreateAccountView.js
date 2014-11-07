@@ -81,7 +81,7 @@
 
 					user.signUp(null, {
 						success: function (user){
-							App.router.navigate('', {trigger:true});
+							App.router.navigate('userPage', {trigger:true});
 						},
 						error: function (user, error){
 							console.log(error)

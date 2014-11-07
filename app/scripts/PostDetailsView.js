@@ -50,6 +50,10 @@
 		},
 
 		initialize: function (){
+			console.log(this.model.toJSON());
+			console.log(this.model);
+			console.log(this);
+			console.log(this.collection);
 			$('.container').append(this.el);
 			new App.Models.Post();
 			this.render();
