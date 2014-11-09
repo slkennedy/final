@@ -36,14 +36,6 @@
             <img src = '../images/logo.png'>
         </div> -->
         <section class= 'container'></section>
-        
-        <section class= 'user-courses-container'></section>
-        
-        <section class= 'possible-course-header'>
-            <h3>Possible Courses</h3>
-            <a href='#createCourse'>Create A Course</a>
-        </section>
-        <section class= 'possible-courses-container'></section>
 
         
         <!-- build:js scripts/vendor.js -->
@@ -133,14 +125,24 @@
 
         <script type="text/template" id='templates-user-page'>
             <div class='lobby-header'>
-                <span>Hey <%=firstName %> </span>
-                <span class='image-container'><img class='avatar' src = '<%=avatar%>'></span>
+                <span class='image-container'>
+                    <img class='avatar' src = '<%=avatar%>'>
+                </span>
+                <h3><%=firstName %>&#39;s Binder </h3>
             </div>
+        </script>
+
+        <script type='text/template' id='templates-possible-course-header'>
+            <h3>Possible Courses</h3>
+            <a href='#createCourse' class='create-course'>Create A Course</a>
         </script>
 
         <script type="text/template" id='templates-possible-courses'>
             <div class='possible-courses'>
-                <a href='#/courses/<%=objectId%>'><%= courseName %>, <%= semester %>, <%= year %></a>
+                <a href='#/courses/<%=objectId%>'>
+                    <p><%= courseName %></p> 
+                    <%= semester %>, <%= year %>
+                </a>
                 <button class='button'>+</button>
             </div>
         </script>
@@ -152,7 +154,8 @@
 
         <script type="text/template" id='templates-user-courses'>
             <a href='#/courses/<%=objectId%>'>
-                <%= courseName %>, <%= semester %>, <%= year %>
+            <p><%= courseName %></p> 
+                <p><%= semester %>, <%= year %></p>
             </a>
         </script>
 

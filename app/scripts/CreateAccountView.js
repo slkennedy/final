@@ -34,7 +34,7 @@
 			e.preventDefault();
 			
 			var query = new Parse.Query(App.Models.School);
-			query.equalTo('objectId', $('.school-list').val());
+			query.equalTo('Name', $('.tt-input').val());
 			query.first().then(function (school){
 				var user = new Parse.User ();
 				user.set ('firstName', $('input[name="firstName"]').val());

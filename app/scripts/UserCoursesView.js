@@ -13,6 +13,7 @@
 		},
 
 		render: function () {
+			this.$el.append(this.template);
 			$('.user-course-item').remove();
 			this.collection.each(_.bind(this.renderChildren, this));
 		},

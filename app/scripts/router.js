@@ -29,45 +29,30 @@
 
 		home: function (){
 			$('.container').empty();
-			$('.user-courses-container').hide();
-			$('.possible-course-header').hide();
-			$('.possible-courses-container').hide();
 
 			new App.Views.HomeView();
 		},
 
 		create: function (){
 			$('.container').empty();
-			$('.user-courses-container').hide();
-			$('.possible-course-header').hide();
-			$('.possible-courses-container').hide();
 
 			new App.Views.CreateAccountView();
 		},
 
 		login: function (){
 			$('.container').empty(),
-			$('.user-courses-container').hide();
-			$('.possible-course-header').hide();
-			$('.possible-courses-container').hide();
 
 			new App.Views.LoginView();
 		},
 
 		resetLogin: function (){
 			$('.container').empty();
-			$('.user-courses-container').hide();
-			$('.possible-course-header').hide();
-			$('.possible-courses-container').hide();
-
+		
 			new App.Views.ResetLoginView();
 		},
 
 		logout: function (){
 			$('.container').empty();
-			$('.user-courses-container').hide();
-			$('.possible-course-header').hide();
-			$('.possible-courses-container').hide();
 
 			new App.Views.LogoutView();
 		},
@@ -76,9 +61,6 @@
 			$('.container').empty();
 			$('.user-courses-container').empty();
 			$('.possible-courses-container').empty();
-			$('.user-courses-container').show();
-			$('.possible-course-header').show();
-			$('.possible-courses-container').show();
 
 			new App.Views.UserPageView({
 				model: Parse.User.current()
@@ -109,9 +91,6 @@
 
 		update: function (){
 			$('.container').empty();
-			$('.user-courses-container').hide();
-			$('.possible-course-header').hide();
-			$('.possible-courses-container').hide();
 
 			new App.Views.UpdateAccountView ({
 				model: Parse.User.current()
@@ -120,18 +99,12 @@
 
 		createCourse: function (){
 			$('.container').empty();
-			$('.user-courses-container').hide();
-			$('.possible-course-header').hide();
-			$('.possible-courses-container').hide();
 
 			new App.Views.CreateCourseView();
 		},
 
 		courseDetails: function(courseId) {
 			$('.container').empty();
-			$('.user-courses-container').hide();
-			$('.possible-course-header').hide();
-			$('.possible-courses-container').hide();
 
 			new Parse.Query('Course').get(courseId, {
 				success: function (course){
@@ -151,9 +124,6 @@
 
 		postDetails: function (postId) {
 			$('.container').empty();
-			$('.user-courses-container').hide();
-			$('.possible-course-header').hide();
-			$('.possible-courses-container').hide();
 
 			new Parse.Query('Post').get(postId, {
 				success: function (post){

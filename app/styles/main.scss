@@ -292,25 +292,97 @@ html, body {
 
     //userPage styles
     .user-page-container {
-        width: 95%;
-        height: 100%;
-        display: block;
-        left: 5%;
+        width: 80%;
         position: relative;
-        padding: 0;
         margin: 0;
-        width: 50%;
-        position: relative;
-        margin: auto;
         padding: 40px 0 80px;
-        text-align: center;
         background: $primary-white;
-        @include border-radius(5px);
+        @include border-radius(0 5px 5px 0);
+        // top: 50%;
+        // transform: translateY(-50%);
+
+
+        .lobby-header {
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+
+        .user-course-list {
+            list-style: none;
+            margin-bottom: 50px;
+            padding: 0;
+            margin: 0;
+        }
+
+        .user-course-item {
+            display: inline-block;
+            width: 250px;
+            height: 250px;
+            // margin: 10px;
+            margin: 10px 25px;
+            background: #fbdf4b;
+            overflow: hidden;
+            // background: linear-gradient(to bottom right, $primary-green, #ebf0b6);
+            // -webkit-box-shadow: 2px 8px 6px -6px $primary-grey;
+            // -moz-box-shadow: 2px 8px 6px -6px $primary-grey;
+            // box-shadow: 2px 8px 6px -6px $primary-grey;
+            -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+            -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+            padding: 10px;
+        }
+
+        li:nth-child(2n+1) {
+                -webkit-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+                -moz-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        // .user-course-item:before,
+        // .user-cousre-item:after {
+        //     content: '';
+        //     z-index: -1;
+        //     position: absolute;
+        //     left: 10px;
+        //     bottom: 10px;
+        //     width: 70%;
+        //     max-width: 300px; /* avoid rotation causing ugly appearance at large container widths */
+        //     max-height: 100px;
+        //     height: 55%;
+        //     -webkit-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        //     -moz-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        //     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        //     -webkit-transform: skew(-15deg) rotate(-6deg);
+        //     -moz-transform: skew(-15deg) rotate(-6deg);
+        //     -ms-transform: skew(-15deg) rotate(-6deg);
+        //     -o-transform: skew(-15deg) rotate(-6deg);
+        //     transform: skew(-15deg) rotate(-6deg);
+        // }
+
+        // .user-course-item:before {
+        //     content: "";
+        //     position: absolute;
+        //     top: 0%;
+        //     left: 0%;
+        //     width: 0px;
+        //     height: 0px;
+        //     border-bottom: 30px solid #FFFFA5;
+        //     border-left: 30px solid #e8e8e8; /*Set to background color, not transparent!*/
+        //     -webkit-box-shadow: 0 2px 4px blue;
+        //     -moz-box-shadow: 0 2px 4px blue;
+        //     box-shadow: 0 2px 4px blue;
+        // }
+
+        a {
+            text-decoration: none;
+            color: $primary-purple;
+            font-size: 1.5em;
+            font-family: $text-font;
+        }
     }
 
-    .lobby-header {
-        
-    }
+
 }
 
 
@@ -330,21 +402,21 @@ html, body {
 
 // }
 
-.possible-course-header,
-.possible-courses-container {
-    width: 100%;
-    position: absolute;
-    left: 5%;
-    margin-top: 0;
-    width: 50%;
-    margin: auto;
-    padding: 40px 0 80px;
-    text-align: center;
-    background: $primary-white;
-    @include border-radius(5px);
-    top: 60%;
-    transform: translateY(-50%);
-}
+// .possible-course-header,
+// .possible-courses-container {
+//     width: 100%;
+//     position: absolute;
+//     left: 5%;
+//     margin-top: 0;
+//     width: 50%;
+//     margin: auto;
+//     padding: 40px 0 80px;
+//     text-align: center;
+//     background: $primary-white;
+//     @include border-radius(5px);
+//     top: 60%;
+//     transform: translateY(-50%);
+// }
 
 //use odd and even selectors to make the posts avatars vary from left and right sides
 //form validation - unheap

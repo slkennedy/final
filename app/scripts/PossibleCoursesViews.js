@@ -4,6 +4,7 @@
 	App.Views.PossibleCourseList = Parse.View.extend ({
 		tagName: 'ul',
 		className: 'possible-course-list',
+		template: _.template($('#templates-possible-course-header').html()),
 	
 		initialize: function (opts) {
 			this.siblingcollection = opts.siblingCollection;
@@ -12,6 +13,7 @@
 		},
 
 		render: function () {
+			this.$el.append(this.template);
 			this.collection.each(_.bind(this.renderChildren, this));
 			console.log(this.siblingcollection);
 		},
