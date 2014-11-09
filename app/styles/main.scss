@@ -15,6 +15,7 @@ $primary-blue: #9bd5d7;
 $secondary-grey: #333b3a;
 $secondary-purple: #9b9bba;
 $secondary-blue: #b9e4e8;
+$transparent-secondary-blue: rgba(185, 228, 232, 0.25);
 
 $header-font: 'PT Mono';
 $text-font: 'PT Sans';
@@ -34,9 +35,10 @@ $text-font: 'PT Sans';
 html, body {
     height: 100%;
     font-family: $text-font;
-    // background: 
-        // linear-gradient($transparent-white, $transparent-white), 
-        // url('../images/cool.jpg') no-repeat center center fixed;
+    background: 
+        linear-gradient($transparent-secondary-blue, $transparent-secondary-blue), 
+        url('../images/cool.jpg') no-repeat center bottom fixed;
+    background-size: 99%;    
     // background: linear-gradient($transparent-white, $transparent-white), url('../images/comp.jpg');
 }
 
@@ -89,27 +91,30 @@ html, body {
 }
 
 .logo-div {
-    position: absolute;
+    position: relative;
     left: 5%;
-    margin-top: 20px;
-    width: 20%;
+    margin: 20px 0 40px;
+    width: 95%;
     padding: 10px;
-    outline: 2px solid green;
-    background: $primary-white;
+    // outline: 2px solid green;
+    background: $transparent-white;
+    text-align: center;
 
     img {
-        width: 100%;
+        width: 20%;
+        margin: 0 auto;
+        // outline: 1px solid blue;
     }
 }
 
 .container {
-    width: 90%;
+    width: 95%;
     height: 100%;
     display: block;
     left: 5%;
     position: relative;
     padding: 0;
-    margin: 0;
+    margin: auto 0;
 
     .avatar {
         // width: 150px;
@@ -205,7 +210,52 @@ html, body {
 
     }
 
+    //Create Account Page Styles
+    .create-account-div {
+        width: 50%;
+        position: relative;
+        margin: auto auto;
+        padding: 40px 0 80px;
+        text-align: center;
+        background: $transparent-grey;
+        @include border-radius(5px);
 
+        h1 {
+            font-family: $header-font;
+            font-size: 3.75em;
+            color: $primary-white;
+            margin: 0;
+            padding: 0;
+        }
+
+        input {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            -ms-appearance:none;
+            @include border-radius(3px);
+            display: block;
+            margin: 10px auto;
+            width: 50%;
+            height: 2em;
+            text-align: center;
+            font-size: 1.5em;
+        }
+
+        button {
+            width: 50%;
+            font-size: 1.25em;
+            font-family: $text-font;
+            margin: 10px;
+            text-transform: uppercase;
+            @include border-radius(2px);
+            -moz-box-shadow: inset 0 0 3px $secondary-grey;
+            -webkit-box-shadow: inset 0 0 3px $secondary-grey;
+            box-shadow: inset 0 0 3px $secondary-grey;            
+            border: none;
+            padding: 5px 0;
+
+        }
+    }
 
 }
 
@@ -214,7 +264,6 @@ html, body {
     width: 100%;
     position: relative;
     left: 5%;
-    height: 100%;
     margin-top: 0;
 
 }
@@ -224,7 +273,6 @@ html, body {
     width: 100%;
     position: relative;
     left: 5%;
-    height: 100%;
 }
 
 //use odd and even selectors to make the posts avatars vary from left and right sides

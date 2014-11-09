@@ -2,6 +2,7 @@
 	'use strict';
 
 	App.Views.CreateAccountView = Parse.View.extend ({
+		className: 'create-account-div',
 		template: _.template($('#templates-create-account').html()),
 
 		events: {
