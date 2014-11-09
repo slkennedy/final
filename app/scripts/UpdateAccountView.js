@@ -26,6 +26,7 @@
 		},
 
 		initialize: function () {
+			console.log(this.model);
 			$('.container').append(this.el);
 			this.render();
 		},

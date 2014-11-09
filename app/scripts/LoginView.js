@@ -2,6 +2,7 @@
 	'use strict';
 
 	App.Views.LoginView = Parse.View.extend ({
+		className: 'login-wrapper',
 		template: _.template($('#templates-login').html()),
 
 		events: {

@@ -157,7 +157,9 @@
 
 			new Parse.Query('Post').get(postId, {
 				success: function (post){
-					new App.Views.PostDetailsView({model: post});
+					new App.Views.PostDetailsView({
+						model: post
+					});
 				}, 
 				error: function (course, err){
 					console.log('course not found')

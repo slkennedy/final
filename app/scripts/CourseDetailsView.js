@@ -37,22 +37,17 @@
 			var post = new App.Models.Post();
 			post.set ('postContent', $('textarea[name="post"]').val());
 			post.set ('postAuthor', Parse.User.current());
-			
 
 			post.save().then(function () {
-				// success: function (post){
-					// var collection = new App.Collections.Posts();
-					console.log('success', post)
-					// new App.Views.PostListViews();
-
+				console.log('success', post)
+				var id = post.get('objectId');
+				console.log(id);
+				post.set('postId', id);
+				post.save().then(function () {
 					var relation = course.relation('posts');
 					relation.add(post);
 					course.save();
-					
-				// },
-				// error: function (post, err){
-				// 	console.log('boo', err)
-				// }
+				});		
 			});
 		},
 
