@@ -6,7 +6,7 @@
 		template: _.template($('#templates-create-account').html()),
 
 		events: {
-			'click .button': 'createAccount'
+			'click .create-account-button': 'createAccount'
 		},
 
 		initialize: function (){
@@ -26,7 +26,7 @@
 				cb(self.collection.toJSON());
 			};
 
-			$('.typeahead').typeahead({}, {source: source, name: 'cool', displayKey: 'Name'});
+			$('.typeahead').typeahead({}, {source: source, name: 'schools', displayKey: 'Name'});
 			
 		},
 

@@ -5,7 +5,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/font
 // endbower
 
 $primary-grey: #221e1f;
-$transparent-grey: rgba(34, 30, 31, 0.90);
+$transparent-grey: rgba(34, 30, 31, 0.40);
 $primary-white: #ffffff;
 $transparent-white: rgba(255, 255, 255, 0.25);
 $primary-purple: #2b2b50;
@@ -36,9 +36,9 @@ html, body {
     height: 100%;
     font-family: $text-font;
     background: 
-        linear-gradient($transparent-secondary-blue, $transparent-secondary-blue), 
-        url('../images/cool.jpg') no-repeat center bottom fixed;
-    background-size: 99%;    
+        linear-gradient($transparent-grey, $transparent-grey), 
+        url('../images/comp.jpg') no-repeat center center fixed;
+    background-size: cover;    
     // background: linear-gradient($transparent-white, $transparent-white), url('../images/comp.jpg');
 }
 
@@ -97,7 +97,7 @@ html, body {
     width: 95%;
     padding: 10px;
     // outline: 2px solid green;
-    background: $transparent-white;
+    // background: $transparent-white;
     text-align: center;
 
     img {
@@ -114,7 +114,7 @@ html, body {
     left: 5%;
     position: relative;
     padding: 0;
-    margin: auto 0;
+    margin: 0;
 
     .avatar {
         // width: 150px;
@@ -134,18 +134,20 @@ html, body {
     }
 
     .login-container {
-        width: 30%;
+        width: 50%;
         position: relative;
-        margin: auto auto;
+        margin: auto;
         padding: 40px 0 80px;
         text-align: center;
-        background: $transparent-grey;
+        background: $primary-white;
         @include border-radius(5px);
-
+        top: 50%;
+        transform: translateY(-50%);
+        
         h1 {
             font-family: $header-font;
-            font-size: 3.75em;
-            color: $primary-white;
+            font-size: 3em;
+            color: $primary-grey;
             margin: 0;
             padding: 0;
         }
@@ -156,10 +158,10 @@ html, body {
             -ms-appearance:none;
             @include border-radius(3px);
             display: block;
-            margin: 10px auto;
+            margin: 17px auto;
             width: 50%;
             height: 2em;
-            text-align: center;
+            text-align: left;
             font-size: 1.5em;
         }
 
@@ -178,12 +180,15 @@ html, body {
 
         }
 
-        .login-button {
+        .login-button,
+        .reset-password {
             background: linear-gradient(
                 $primary-green 68%, 
-                $primary-white 
+                #ebf0b6
             );
             color: $primary-grey;
+            margin-bottom: 30px;
+            margin-top: 0;
             -moz-box-shadow: inset 0 0 3px $primary-green;
             -webkit-box-shadow: inset 0 0 3px $primary-green;
             box-shadow: inset 0 0 3px $primary-green;   
@@ -193,37 +198,45 @@ html, body {
             background: linear-gradient(
                 $primary-purple, 
                 $primary-purple, 
-                $secondary-purple
+                #5F5974
             );
             color: $primary-blue;
         }
 
         a {
             text-decoration: none;
-            color: $primary-white;
+            color: $primary-purple;
             font-size: 1.5em;
             font-family: $text-font;
             float: right;
             margin: 25px 20px;
         }
 
-
+        .forgot-password-wrapper {
+            margin-top: 20px;
+            background: $transparent-white;
+            @include border-radius(5px);
+            padding: 15px 0 0;
+            margin: 10px 30px;
+        }
     }
 
     //Create Account Page Styles
     .create-account-div {
         width: 50%;
         position: relative;
-        margin: auto auto;
+        margin: auto;
         padding: 40px 0 80px;
         text-align: center;
-        background: $transparent-grey;
+        background: $primary-white;
         @include border-radius(5px);
-
+        top: 50%;
+        transform: translateY(-50%);
+        
         h1 {
             font-family: $header-font;
-            font-size: 3.75em;
-            color: $primary-white;
+            font-size: 3em;
+            color: $primary-grey;
             margin: 0;
             padding: 0;
         }
@@ -234,11 +247,19 @@ html, body {
             -ms-appearance:none;
             @include border-radius(3px);
             display: block;
-            margin: 10px auto;
+            margin: 17px auto;
             width: 50%;
             height: 2em;
-            text-align: center;
+            text-align: left;
             font-size: 1.5em;
+        }
+        
+        span {
+            display: block;
+
+            .typeahead {
+                display: block;
+            }
         }
 
         button {
@@ -253,26 +274,76 @@ html, body {
             box-shadow: inset 0 0 3px $secondary-grey;            
             border: none;
             padding: 5px 0;
+        }
 
+        .create-account-button {
+            background: linear-gradient(
+                $primary-green 68%, 
+                #ebf0b6
+            );
+            color: $primary-grey;
+            margin-bottom: 30px;
+            margin-top: 0;
+            -moz-box-shadow: inset 0 0 3px $primary-green;
+            -webkit-box-shadow: inset 0 0 3px $primary-green;
+            box-shadow: inset 0 0 3px $primary-green;   
         }
     }
 
+    //userPage styles
+    .user-page-container {
+        width: 95%;
+        height: 100%;
+        display: block;
+        left: 5%;
+        position: relative;
+        padding: 0;
+        margin: 0;
+        width: 50%;
+        position: relative;
+        margin: auto;
+        padding: 40px 0 80px;
+        text-align: center;
+        background: $primary-white;
+        @include border-radius(5px);
+    }
+
+    .lobby-header {
+        
+    }
 }
 
 
-.user-courses-container {
-    width: 100%;
-    position: relative;
-    left: 5%;
-    margin-top: 0;
+// .user-courses-container {
+//     width: 100%;
+//     position: absolute;
+//     left: 5%;
+//     margin-top: 0;
+//     width: 50%;
+//     margin: auto;
+//     padding: 40px 0 80px;
+//     text-align: center;
+//     background: $primary-white;
+//     @include border-radius(5px);
+//     top: 30%;
+//     transform: translateY(-50%);
 
-}
+// }
 
 .possible-course-header,
 .possible-courses-container {
     width: 100%;
-    position: relative;
+    position: absolute;
     left: 5%;
+    margin-top: 0;
+    width: 50%;
+    margin: auto;
+    padding: 40px 0 80px;
+    text-align: center;
+    background: $primary-white;
+    @include border-radius(5px);
+    top: 60%;
+    transform: translateY(-50%);
 }
 
 //use odd and even selectors to make the posts avatars vary from left and right sides

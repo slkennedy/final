@@ -2,6 +2,7 @@
 	'use strict';
 
 	App.Views.ForgotPasswordView = Parse.View.extend ({
+		className: 'forgot-password-wrapper',
 		template: _.template($('#templates-forgot-pass').html()),
 
 		events: {

@@ -5,18 +5,21 @@
 		tagName: 'ul',
 		className: 'possible-course-list',
 	
-		initialize: function () {
-			$('.possible-courses-container').append(this.el);
+		initialize: function (opts) {
+			this.siblingcollection = opts.siblingCollection;
+			$('.user-page-container').append(this.el);
 			this.render();	
 		},
 
 		render: function () {
 			this.collection.each(_.bind(this.renderChildren, this));
+			console.log(this.siblingcollection);
 		},
 
 		renderChildren: function (course) {
 			new App.Views.PossibleCourses ({
 				collection: this.collection,
+				siblingcollection: this.siblingcollection,
 				model: course,
 			});
 		}
@@ -42,11 +45,15 @@
 
 			course.save();
 			
+			console.log(this.siblingcollection);
+			this.siblingcollection.add(course);
 			this.collection.remove(course);
 			this.remove();
 		},
 
-		initialize: function () {
+		initialize: function (siblingcollection) {
+			this.siblingcollection = siblingcollection.siblingcollection;
+			console.log(this.siblingcollection);
 			$('.possible-course-list').append(this.el);
 			this.render();
 		},

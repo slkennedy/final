@@ -84,27 +84,27 @@
 				model: Parse.User.current()
 			});
 
-			var usercourses = new App.Collections.UsersCourses()
-			usercourses.fetch().then(function(){
-				new App.Views.UserCourses ({
-					collection: usercourses
-				});
-			});
+			// var usercourses = new App.Collections.UsersCourses()
+			// usercourses.fetch().then(function(){
+			// 	new App.Views.UserCourses ({
+			// 		collection: usercourses
+			// 	});
+			// });
 
-			var possiblecourses = new App.Collections.PossibleCourses()
-			possiblecourses.fetch().then(function(){
-				new App.Views.PossibleCourseList ({
-					collection: possiblecourses
-				});	
-			});
+			// var possiblecourses = new App.Collections.PossibleCourses()
+			// possiblecourses.fetch().then(function(){
+			// 	new App.Views.PossibleCourseList ({
+			// 		collection: possiblecourses
+			// 	});	
+			// });
 
 			/*
 				This is never calling `.off` - separate function 
 			*/
 
-			possiblecourses.on('remove', function (model){
-				usercourses.add(model);
-			});
+			// possiblecourses.on('remove', function (model){
+			// 	usercourses.add(model);
+			// });
 		},
 
 		update: function (){

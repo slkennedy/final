@@ -32,12 +32,13 @@
                 <a href='#logout'><li><img src = '../images/icon_logout.png'></li></a>
             </ul>
         </nav>
-        <div class='logo-div'>
+        <!-- <div class='logo-div'>
             <img src = '../images/logo.png'>
-        </div>
-        <section class= 'container'>            
-        </section>
+        </div> -->
+        <section class= 'container'></section>
+        
         <section class= 'user-courses-container'></section>
+        
         <section class= 'possible-course-header'>
             <h3>Possible Courses</h3>
             <a href='#createCourse'>Create A Course</a>
@@ -110,13 +111,11 @@
             <form>
                 <input type='text' name='firstName' placeholder='First Name'>
                 <input type='text' name='lastName' placeholder='Last Name'>
-                <div id='bloodhound'>
                 <input class='typeahead' type='text' placeholder='School Name'>
-                </div>
                 <input type='file' name='avatar' class='avatar'>
                 <input type='email' name='email' placeholder='Email'>
                 <input type='password' name='password' placeholder='Password'>
-                <button class='button'>Create Account</button>
+                <button class='create-account-button'>Create Account</button>
             </form>
         </script>
 
@@ -134,7 +133,6 @@
 
         <script type="text/template" id='templates-user-page'>
             <div class='lobby-header'>
-                <img src='../images/logo.png'>
                 <span>Hey <%=firstName %> </span>
                 <span class='image-container'><img class='avatar' src = '<%=avatar%>'></span>
             </div>
@@ -201,7 +199,7 @@
         </script>
 
         <script type='text/template' id='templates-post-list'>
-            <a href='#/posts/:postId'>
+            <a href='#/posts/<%= objectId %>'>
                 <%= postContent %>
             </a>
         </script>

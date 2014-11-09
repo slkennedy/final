@@ -7,7 +7,7 @@
 		template: _.template($('#templates-user-course-list').text()),
 
 		initialize: function () {
-			$('.user-courses-container').append(this.el);
+			$('.user-page-container').append(this.el);
 			this.render();
 			this.collection.on('add remove sync', this.render, this);
 		},
