@@ -75,6 +75,7 @@ gulp.task('extras', function () {
 });
 
 gulp.task('clean', function () {
+    $.cache.clearAll();
     return gulp.src(['.tmp', 'dist'], { read: false }).pipe($.clean());
 });
 

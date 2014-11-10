@@ -13,6 +13,7 @@
 			var post = this.model;
 			e.preventDefault();
 			var comment = new App.Models.Comment();
+			console.log('comment', comment.attributes);
 			comment.set ('commentContent', $('textarea[name="comment"]').val());
 			comment.set ('postAuthor', Parse.User.current());
 			comment.set ('post', post);
@@ -32,13 +33,13 @@
 		},
 
 		initialize: function (){
-			console.log(this.model.toJSON());
-			console.log(this.model);
-			console.log(this);
-			console.log(this.collection);
+			// console.log(this.model.toJSON());
+			// console.log(this.model);
+			// console.log(this);
+			// console.log(this.collection);
 			$('.container').append(this.el);
 			new App.Models.Post();
-			console.log(this.model.toJSON());
+			// console.log(this.model.toJSON());
 			this.render();
 		},
 
