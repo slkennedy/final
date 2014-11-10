@@ -2,6 +2,7 @@
 	'use strict';
 
 	App.Views.PostDetailsView = Parse.View.extend ({
+		className:'post-detail-container',
 		template: _.template($('#templates-post-details').html()),
 
 		events: {

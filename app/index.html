@@ -69,17 +69,15 @@
 
         <script type='text/template' id='templates-login'>
             <div class='login-container'>
-            <h1>Login</h1>
-            <form>
-                <input type='email' name='email' placeholder='Email'>
-                <input type='password' name='password' placeholder='Password'>
-                <button class='login-button'>Login</button>
-            </form>
-            <button class='forgot-password'>Forgot Password</button>
-            <div class='request-password'></div>
-            <div>
+                <h1>Login</h1>
+                <form>
+                    <input type='email' name='email' placeholder='Email'>
+                    <input class='last-input' type='password' name='password' placeholder='Password'>
+                    <button class='login-button'>Login</button>
+                </form>
+                <button class='forgot-password'>Forgot Password</button>
+                <div class='request-password'></div>
                 <a href = '#create'>Create Account</a>
-            </div>
             </div>
         </script>
 
@@ -128,19 +126,19 @@
                 <span class='image-container'>
                     <img class='avatar' src = '<%=avatar%>'>
                 </span>
-                <h3><%=firstName %>&#39;s Binder </h3>
+                <h1><%=firstName %>&#39;s Binder </h1>
             </div>
         </script>
 
         <script type='text/template' id='templates-possible-course-header'>
-            <h3>Possible Courses</h3>
+            <h3 class='header-possible'>Possible Courses</h3>
             <a href='#createCourse' class='create-course'>Create A Course</a>
         </script>
 
         <script type="text/template" id='templates-possible-courses'>
             <div class='possible-courses'>
                 <a href='#/courses/<%=objectId%>'>
-                    <p><%= courseName %></p> 
+                    <p class='highlight'><%= courseName %></p> 
                     <%= semester %>, <%= year %>
                 </a>
                 <button class='button'>+</button>
@@ -154,7 +152,7 @@
 
         <script type="text/template" id='templates-user-courses'>
             <a href='#/courses/<%=objectId%>'>
-            <p><%= courseName %></p> 
+            <p class='highlight'><%= courseName %></p> 
                 <p><%= semester %>, <%= year %></p>
             </a>
         </script>
@@ -183,7 +181,7 @@
 
         <script type="text/template" id='templates-course-details'>
             <div class='course-header'>
-                <h2 class='course-name'><%= courseName %></h3>
+                <h1 class='course-name'><%= courseName %></h1>
             </div>
             <div class='course-action'>
                 <button class='join-course'>Join Us</button>
@@ -194,14 +192,16 @@
             </div>
             <div class='new-post-container'>
                 <form class='new-post'> 
-                    <textarea name='post' placeholder = 'Make a New Post'></textarea>
+                    <textarea rows='3' name='post' placeholder = 'Make a New Post'></textarea>
                     <button class='create-post'>Post</button>
                 </form>
             </div>
+            <div class='post-list-header'><h2>Recent Posts</h2></div>
             <div class='post-list-container'></div>
         </script>
 
         <script type='text/template' id='templates-post-list'>
+            <div class='post-avatar'></div>
             <a href='#/posts/<%= objectId %>'>
                 <%= postContent %>
             </a>
@@ -209,11 +209,11 @@
 
         <script type='text/template' id='templates-post-details'>
             <h1>Post</h1>
-            <p><%= model.postContent %></p>
-            <span><%= model.postAuthor %></span>
-            <p>COMMENTS</p>
+            <p class='post-content'><%= model.postContent %>
+            <%= model.postAuthor %></p>
+            <h2>Comments</h2>
             <p>Check out this comment someone left...blah blah blah</p>
-            <h3>Leave a Comment</h3>
+            <h2>Leave a Comment</h2>
             <textarea name='comment' placeholder='Comment on this...'></textarea>
             <button class='button'>Comment</button>
         </script>

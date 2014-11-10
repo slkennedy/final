@@ -2,6 +2,7 @@
 	'use strict';
 
 	App.Views.CourseDetailsView = Parse.View.extend ({
+		className: 'course-details-container',
 		template: _.template($('#templates-course-details').html()),
 
 		events: {

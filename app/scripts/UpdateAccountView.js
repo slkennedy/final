@@ -2,6 +2,7 @@
 	'use strict';
 
 	App.Views.UpdateAccountView = Parse.View.extend ({
+		className: 'update-account-div',
 		template: _.template($('#templates-update-account').html()),
 
 		events: {

@@ -5,16 +5,20 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/font
 // endbower
 
 $primary-grey: #221e1f;
-$transparent-grey: rgba(34, 30, 31, 0.40);
 $primary-white: #ffffff;
-$transparent-white: rgba(255, 255, 255, 0.25);
 $primary-purple: #2b2b50;
 $primary-green: #d8e164;
 $primary-blue: #9bd5d7;
+$primary-yellow: #fbdf4b;
 
 $secondary-grey: #333b3a;
 $secondary-purple: #9b9bba;
 $secondary-blue: #b9e4e8;
+
+$transparent-grey: rgba(34, 30, 31, 0.30);
+$transparent-white: rgba(255, 255, 255, 0.25);
+$transparent-blue: rgba(155, 213, 215, 0.75);
+$transparent-yellow: RGBA(247, 219, 73, 0.15);
 $transparent-secondary-blue: rgba(185, 228, 232, 0.25);
 
 $header-font: 'PT Mono';
@@ -37,7 +41,7 @@ html, body {
     font-family: $text-font;
     background: 
         linear-gradient($transparent-grey, $transparent-grey), 
-        url('../images/comp.jpg') no-repeat center center fixed;
+        url('../images/composition.gif') no-repeat center center fixed;
     background-size: cover;    
     // background: linear-gradient($transparent-white, $transparent-white), url('../images/comp.jpg');
 }
@@ -48,7 +52,7 @@ html, body {
     position: fixed;
     left: 0;
     bottom: 0;
-    background: $primary-grey;
+    background: black;
 
     ul {
         width: 100%;
@@ -127,7 +131,6 @@ html, body {
     }
 
     //Login Page Styles
-
     .login-wrapper {
         height: 100%;
         width: 100%;
@@ -165,59 +168,66 @@ html, body {
             font-size: 1.5em;
         }
 
+        .last-input {
+            margin-bottom: 0;
+        }
+
         button {
-            width: 50%;
             font-size: 1.25em;
             font-family: $text-font;
             margin: 10px;
             text-transform: uppercase;
-            @include border-radius(2px);
-            -moz-box-shadow: inset 0 0 3px $secondary-grey;
-            -webkit-box-shadow: inset 0 0 3px $secondary-grey;
-            box-shadow: inset 0 0 3px $secondary-grey;            
+            // -moz-box-shadow: inset 0 0 3px $secondary-grey;
+            // -webkit-box-shadow: inset 0 0 3px $secondary-grey;
+            // box-shadow: inset 0 0 3px $secondary-grey;            
             border: none;
-            padding: 5px 0;
-
+            -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+            -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
         }
 
-        .login-button,
-        .reset-password {
-            background: linear-gradient(
-                $primary-green 68%, 
-                #ebf0b6
-            );
+        .login-button {
+            background: $primary-yellow; 
             color: $primary-grey;
-            margin-bottom: 30px;
-            margin-top: 0;
-            -moz-box-shadow: inset 0 0 3px $primary-green;
-            -webkit-box-shadow: inset 0 0 3px $primary-green;
-            box-shadow: inset 0 0 3px $primary-green;   
+            margin-bottom: 10px;
+            padding: 10px;
+            width: 35%;
         }
 
-        .forgot-password {
-            background: linear-gradient(
-                $primary-purple, 
-                $primary-purple, 
-                #5F5974
-            );
-            color: $primary-blue;
+        .forgot-password, 
+        .reset-password {
+            background: $transparent-blue;
+            color: $primary-grey;
         }
 
         a {
             text-decoration: none;
-            color: $primary-purple;
+            color: $primary-grey;
             font-size: 1.5em;
             font-family: $text-font;
             float: right;
-            margin: 25px 20px;
+            margin: 25px 0 20px 0;
+            background: $primary-yellow;
+            padding: 5px;
+            -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+            -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+        }
+
+        .create-account-link {
+            background: $primary-yellow;
         }
 
         .forgot-password-wrapper {
             margin-top: 20px;
-            background: $transparent-white;
+            background: $transparent-grey;
             @include border-radius(5px);
             padding: 15px 0 0;
             margin: 10px 30px;
+
+            input {
+                margin-bottom: 5px;
+            }
         }
     }
 
@@ -262,31 +272,20 @@ html, body {
             }
         }
 
-        button {
-            width: 50%;
+        .create-account-button {
             font-size: 1.25em;
             font-family: $text-font;
             margin: 10px;
-            text-transform: uppercase;
-            @include border-radius(2px);
-            -moz-box-shadow: inset 0 0 3px $secondary-grey;
-            -webkit-box-shadow: inset 0 0 3px $secondary-grey;
-            box-shadow: inset 0 0 3px $secondary-grey;            
+            text-transform: uppercase;           
             border: none;
-            padding: 5px 0;
-        }
-
-        .create-account-button {
-            background: linear-gradient(
-                $primary-green 68%, 
-                #ebf0b6
-            );
+            -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+            -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+            background: $primary-yellow; 
             color: $primary-grey;
-            margin-bottom: 30px;
-            margin-top: 0;
-            -moz-box-shadow: inset 0 0 3px $primary-green;
-            -webkit-box-shadow: inset 0 0 3px $primary-green;
-            box-shadow: inset 0 0 3px $primary-green;   
+            margin-bottom: 10px;
+            padding: 10px;
+            width: 35%;
         }
     }
 
@@ -295,35 +294,71 @@ html, body {
         width: 80%;
         position: relative;
         margin: 0;
-        padding: 40px 0 80px;
+        padding: 20px 0 80px;
         background: $primary-white;
         @include border-radius(0 5px 5px 0);
-        // top: 50%;
-        // transform: translateY(-50%);
-
 
         .lobby-header {
             padding: 10px;
             margin-bottom: 20px;
+            font-family: $header-font;
+            font-size: 2.5em;
+            text-transform: uppercase;
+
+            h1 {
+                position: relative;
+                text-align: center;
+            }
+
+            img {
+                position: absolute;
+                top: 0;
+                right: 100px;
+                @include border-radius(0 0 5px 5px);
+            }
         }
 
-
-        .user-course-list {
+        .user-course-list,
+        .possible-course-list {
             list-style: none;
-            margin-bottom: 50px;
             padding: 0;
             margin: 0;
+            text-align: center;
+
+            h3 {
+                text-align: center;
+                font-family: $header-font;
+                text-transform: uppercase;
+                background: $transparent-grey;
+                color: $primary-white;
+                padding: 10px 0;
+                margin: 20px 20px 10px;
+            }
+
+            .header-possible {
+                margin: 20px 20px 0;
+                z-index: 1;
+            }
+
+            .create-course {
+                background: $primary-blue;
+                @include border-radius(0 0 5px 5px);
+                padding: 5px;
+                margin: 0 20px 0 0;
+                float: right;
+                font-size: 1.2em;
+            }
         }
 
-        .user-course-item {
+        .user-course-item,
+        .possible-course-items {
             display: inline-block;
             width: 250px;
             height: 250px;
-            // margin: 10px;
+            text-align: center;
             margin: 10px 25px;
-            background: #fbdf4b;
+            background: $primary-yellow;
             overflow: hidden;
-            // background: linear-gradient(to bottom right, $primary-green, #ebf0b6);
             // -webkit-box-shadow: 2px 8px 6px -6px $primary-grey;
             // -moz-box-shadow: 2px 8px 6px -6px $primary-grey;
             // box-shadow: 2px 8px 6px -6px $primary-grey;
@@ -331,6 +366,7 @@ html, body {
             -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
             box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
             padding: 10px;
+            padding-top: 55px;
         }
 
         li:nth-child(2n+1) {
@@ -376,47 +412,316 @@ html, body {
 
         a {
             text-decoration: none;
-            color: $primary-purple;
+            color: black;
             font-size: 1.5em;
             font-family: $text-font;
         }
+
+        .highlight:hover {
+            background: $primary-green;
+        }
     }
 
+    //updateAccount styles 
+    .update-account-div {
+        width: 80%;
+        position: relative;
+        margin: 0;
+        padding: 20px 0 80px;
+        background: $primary-white;
+        @include border-radius(0 5px 5px 0);
+        position: 50%;
+        transform: translateY(25%);
+        
+        h3 {
+            font-family: $header-font;
+            font-size: 3em;
+            color: $primary-grey;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
 
+        input {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            -ms-appearance:none;
+            @include border-radius(3px);
+            display: block;
+            margin: 17px auto;
+            width: 50%;
+            height: 2em;
+            text-align: left;
+            font-size: 1.5em;
+        }
+
+        form {
+            text-align: center;
+        }
+
+        button {
+            font-size: 1.25em;
+            font-family: $text-font;
+            margin: 10px;
+            text-transform: uppercase;           
+            border: none;
+            -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+            -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+            background: $primary-yellow; 
+            color: $primary-grey;
+            margin-bottom: 10px;
+            padding: 10px;
+            width: 35%;
+        }
+    }
+
+    //courseDetails styles
+    .course-details-container {
+        width: 80%;
+        position: relative;
+        margin: 0;
+        padding: 20px 0 80px;
+        background: $primary-white;
+        @include border-radius(0 5px 5px 0);
+
+        .course-header {
+            padding: 10px;
+            margin-bottom: 20px;
+            font-family: $header-font;
+            font-size: 2.5em;
+            text-transform: uppercase;
+            
+            h1 {
+                position: relative;
+                text-align: center;
+                color: $primary-grey;
+                margin-top: 35px;
+            }
+        }
+
+        .course-action {
+            button {
+                font-size: 1.25em;
+                font-family: $text-font;
+                margin: 10px;
+                text-transform: uppercase;           
+                border: none;
+                -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+                -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+                box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+                background: $primary-yellow; 
+                color: $primary-grey;
+                margin-bottom: 10px;
+                padding: 10px;
+            }
+
+            .join-course {
+                position: absolute;
+                top: 0;
+                right: 150px;
+                margin-top: 0;
+                @include border-radius(0 0 5px 5px);
+            }
+
+            .drop-course {
+                position: absolute;
+                top: 0;
+                right: 0;
+                margin-top: 0;
+                @include border-radius (0 0 5px 5px);
+            }
+        }
+
+        .new-post-header, 
+        .post-list-header {
+            h2 {
+                font-family: $header-font;
+                background: $transparent-grey;
+                color: $primary-white;
+                margin: 0;
+                padding: 0;
+                text-align: center;
+            }
+        }
+
+        .new-post-container {
+            // * {
+            //     outline: 2px solid red;
+            // }
+
+            margin-bottom: 20px;
+
+            form {
+                text-align: center;
+                padding: 0;
+
+                textarea {
+                    font-family: $text-font;
+                    font-size: 1.5em;
+                    width: 50%;
+                    display: block;
+                    margin: 10px auto;
+                }
+
+                .create-post {
+                    font-size: 1.25em;
+                    font-family: $text-font;
+                    margin: 10px auto 0;
+                    text-transform: uppercase;           
+                    border: none;
+                    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+                    -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+                    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+                    background: $primary-yellow; 
+                    color: $primary-grey;
+                    padding: 5px;
+                    display: block;
+                }
+            }
+        }
+    }
+
+    .post-list-container {
+        // * {
+        //     outline: 2px solid blue;
+        // }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 10px;
+        }
+
+        li {
+            width: 100%;
+            height: 170px;
+            margin-bottom: 10px;
+            padding: 10px;
+
+            .post-avatar {
+                width: 150px;
+                height: 150px;
+                overflow: hidden;
+                background: $primary-yellow;
+                display: inline-block;
+                margin: 0;
+                float:left;
+                -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+                -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+                box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+            }
+           
+            a {
+                text-decoration: none;
+                color: $primary-grey;
+                font-size: 1.5em;
+                font-family: $text-font;
+                width: 100%;
+                margin: 50px 10px;
+            } 
+
+        }
+
+        li:nth-child(even) {
+            clear: both;
+            position:relative;
+            height:170px;
+            text-align: right;
+
+            .post-avatar {
+                float:right;
+            } 
+
+            a {
+                clear: both;
+            }
+        }
+
+        li:nth-child(odd) {
+            background: $transparent-yellow;
+        }
+    }
+
+    //postDetails styles
+    .post-detail-container {
+        width: 80%;
+        position: relative;
+        margin: 0;
+        padding: 20px 0 80px;
+        background: $primary-white;
+        @include border-radius(0 5px 5px 0);
+        text-align: center;
+
+        h1 {
+            padding: 10px;
+            margin-bottom: 20px;
+            font-family: $header-font;
+            font-size: 2.5em;
+            text-transform: uppercase;
+            position: relative;
+            text-align: center;
+            color: $primary-grey;
+            margin-top: 35px;
+        }
+
+        .post-content {
+            width: 450px;
+            height: 250px;
+            background: $primary-yellow;
+            text-align: center;
+            padding: 30px;
+            margin: 0 auto 20px;
+            overflow: hidden;
+            -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+            -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+            // -webkit-box-shadow: 2px 8px 6px -6px $primary-grey;
+            // -moz-box-shadow: 2px 8px 6px -6px $primary-grey;
+            // box-shadow: 2px 8px 6px -6px $primary-grey;
+        }
+
+        p {
+            font-family: $text-font;
+            color: $primary-grey;
+            font-size: 1.5em;
+        }
+
+        h2 {
+            font-family: $header-font;
+            background: $transparent-grey;
+            color: $primary-white;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+
+        }
+
+        textarea {
+            font-family: $text-font;
+            font-size: 1.5em;
+            margin: 10px auto;
+            margin-bottom: 0;
+            width: 50%;
+            display: block;
+        }
+
+        button {
+            font-size: 1.25em;
+            font-family: $text-font;
+            margin: 10px auto 0;
+            text-transform: uppercase;           
+            border: none;
+            -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+            -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+            background: $primary-yellow; 
+            color: $primary-grey;
+            padding: 5px;
+            display: block;
+        }
+    }
 }
-
-
-// .user-courses-container {
-//     width: 100%;
-//     position: absolute;
-//     left: 5%;
-//     margin-top: 0;
-//     width: 50%;
-//     margin: auto;
-//     padding: 40px 0 80px;
-//     text-align: center;
-//     background: $primary-white;
-//     @include border-radius(5px);
-//     top: 30%;
-//     transform: translateY(-50%);
-
-// }
-
-// .possible-course-header,
-// .possible-courses-container {
-//     width: 100%;
-//     position: absolute;
-//     left: 5%;
-//     margin-top: 0;
-//     width: 50%;
-//     margin: auto;
-//     padding: 40px 0 80px;
-//     text-align: center;
-//     background: $primary-white;
-//     @include border-radius(5px);
-//     top: 60%;
-//     transform: translateY(-50%);
-// }
 
 //use odd and even selectors to make the posts avatars vary from left and right sides
 //form validation - unheap
