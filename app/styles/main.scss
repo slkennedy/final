@@ -42,7 +42,7 @@ html, body {
     font-family: $text-font;
     background: 
         linear-gradient($transparent-grey, $transparent-grey), 
-        url('../images/composition.gif') no-repeat center center fixed;
+        url('images/composition.gif') no-repeat center center fixed;
     background-size: cover;    
     // background: linear-gradient($transparent-white, $transparent-white), url('../images/comp.jpg');
 }

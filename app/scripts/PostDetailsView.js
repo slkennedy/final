@@ -6,14 +6,14 @@
 		template: _.template($('#templates-post-details').html()),
 
 		events: {
-			'click .button' : 'createComment'
+			'click .create-comment-button' : 'createComment'
 		},
 
 		createComment: function (e){
 			var post = this.model;
 			e.preventDefault();
 			var comment = new App.Models.Comment();
-			console.log('comment', comment.attributes);
+			console.log('comment', comment);
 			comment.set ('commentContent', $('textarea[name="comment"]').val());
 			comment.set ('postAuthor', Parse.User.current());
 			comment.set ('post', post);
