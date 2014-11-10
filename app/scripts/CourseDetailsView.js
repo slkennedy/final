@@ -44,15 +44,11 @@
 			post.set ('postAuthor', Parse.User.current());
 		    var self = this;
 			post.save().then(function () {
-				var id = post.get('objectId');
-				post.set('postId', id);
-				post.save().then(function () {
-					var relation = course.relation('posts');
-					relation.add(post);
-					course.save();
+				var relation = course.relation('posts');
+				relation.add(post);
+				course.save();
 
-					self.collection.add(post);
-				});		
+				self.collection.add(post);
 			});
 		},
 
