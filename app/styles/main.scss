@@ -19,6 +19,7 @@ $transparent-grey: rgba(34, 30, 31, 0.30);
 $transparent-white: rgba(255, 255, 255, 0.25);
 $transparent-blue: rgba(155, 213, 215, 0.75);
 $transparent-yellow: RGBA(247, 219, 73, 0.15);
+$transparent-secondary-yellow: RGBA(247, 219, 73, 0.85);
 $transparent-secondary-blue: rgba(185, 228, 232, 0.25);
 
 $header-font: 'PT Mono';
@@ -176,10 +177,7 @@ html, body {
             font-size: 1.25em;
             font-family: $text-font;
             margin: 10px;
-            text-transform: uppercase;
-            // -moz-box-shadow: inset 0 0 3px $secondary-grey;
-            // -webkit-box-shadow: inset 0 0 3px $secondary-grey;
-            // box-shadow: inset 0 0 3px $secondary-grey;            
+            text-transform: uppercase;          
             border: none;
             -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
             -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
@@ -194,7 +192,16 @@ html, body {
             width: 35%;
         }
 
-        .forgot-password, 
+        .forgot-password {
+            background: $transparent-blue;
+            color: $primary-grey;
+            float: right;
+            margin: -20px -42px 10px 0;
+            height: 30px;
+            text-transform: none;
+            font-size: 1.5em
+        }
+
         .reset-password {
             background: $transparent-blue;
             color: $primary-grey;
@@ -202,24 +209,27 @@ html, body {
 
         a {
             text-decoration: none;
+            height: 30px;
             color: $primary-grey;
             font-size: 1.5em;
             font-family: $text-font;
             float: right;
-            margin: 25px 0 20px 0;
-            background: $primary-yellow;
-            padding: 5px;
+            clear: both;
+            margin: 0 -28px 20px 0;
+            background: $transparent-secondary-yellow;
+            padding: 0 5px;
             -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
             -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
             box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
         }
 
-        .create-account-link {
-            background: $primary-yellow;
-        }
+        // .create-account-link {
+        //     background: $tr-yellow;
+        // }
 
         .forgot-password-wrapper {
             margin-top: 20px;
+            clear: both;
             background: $transparent-grey;
             @include border-radius(5px);
             padding: 15px 0 0;
@@ -356,7 +366,7 @@ html, body {
             width: 250px;
             height: 250px;
             text-align: center;
-            margin: 10px 25px;
+            margin: 10px 20px;
             background: $primary-yellow;
             overflow: hidden;
             // -webkit-box-shadow: 2px 8px 6px -6px $primary-grey;
@@ -369,46 +379,37 @@ html, body {
             padding-top: 55px;
         }
 
-        li:nth-child(2n+1) {
-                -webkit-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-                -moz-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        li:nth-of-type(odd) {
+            -webkit-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            -moz-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
         }
 
-        // .user-course-item:before,
-        // .user-cousre-item:after {
-        //     content: '';
-        //     z-index: -1;
-        //     position: absolute;
-        //     left: 10px;
-        //     bottom: 10px;
-        //     width: 70%;
-        //     max-width: 300px; /* avoid rotation causing ugly appearance at large container widths */
-        //     max-height: 100px;
-        //     height: 55%;
-        //     -webkit-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-        //     -moz-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-        //     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-        //     -webkit-transform: skew(-15deg) rotate(-6deg);
-        //     -moz-transform: skew(-15deg) rotate(-6deg);
-        //     -ms-transform: skew(-15deg) rotate(-6deg);
-        //     -o-transform: skew(-15deg) rotate(-6deg);
-        //     transform: skew(-15deg) rotate(-6deg);
-        // }
+        .corner {
+            -webkit-box-shadow: 4px 5px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+            -moz-box-shadow: 4px 5px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+            box-shadow: 4px 5px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;        
+        }
+        .corner::before {
+            content: "";
+            position: relative;
+            left: -110px;
+            bottom: 80px;
+            width: 0px;
+            height: 0px;
+            border-bottom: 30px solid RGBA(253, 233, 120, 1);
+            border-left: 30px solid $primary-white; /*Set to background color, not transparent!*/
+            -webkit-box-shadow: 0 2px 4px $transparent-grey;
+            -moz-box-shadow: 0 2px 4px $transparent-grey;
+            box-shadow: 0 2px 4px $transparent-grey;
+        }
 
-        // .user-course-item:before {
-        //     content: "";
-        //     position: absolute;
-        //     top: 0%;
-        //     left: 0%;
-        //     width: 0px;
-        //     height: 0px;
-        //     border-bottom: 30px solid #FFFFA5;
-        //     border-left: 30px solid #e8e8e8; /*Set to background color, not transparent!*/
-        //     -webkit-box-shadow: 0 2px 4px blue;
-        //     -moz-box-shadow: 0 2px 4px blue;
-        //     box-shadow: 0 2px 4px blue;
-        // }
+        .possible-course-items.corner::before {
+            position: relative;
+            left: -110px;
+            bottom: 73px;
+        }
+        
 
         a {
             text-decoration: none;

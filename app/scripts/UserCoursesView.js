@@ -13,7 +13,7 @@
 		},
 
 		render: function () {
-			this.$el.append(this.template);
+			this.$el.empty().append(this.template);
 			$('.user-course-item').remove();
 			this.collection.each(_.bind(this.renderChildren, this));
 		},
@@ -37,7 +37,9 @@
 		},
 
 		render: function () {
+			$('li').removeClass('corner');
 			this.$el.append(this.template (this.model.toJSON()));
+			$('li:nth-of-type(2)').addClass('corner');
 		}
 	});
 

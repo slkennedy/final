@@ -10,11 +10,11 @@
 			$('.post-list-container').append(this.el);
 			new App.Models.Course();
 			
-			var course = this.model;
-			var relation = course.relation('posts');
-			this.collection = relation.query().collection();
-			console.log(this.collection);
-			this.collection.on('add', this.render, this);
+			// var course = this.model;
+			// var relation = course.relation('posts');
+			// this.collection = relation.query().collection();
+			// console.log(this.collection);
+			this.collection.on('add remove sync', this.render, this);
 
 			this.render();
 		},
@@ -25,9 +25,11 @@
 			this.$el.empty();
 			// var relation = course.relation('posts');
 			// var collection = relation.query().collection()
-			this.collection.fetch().then(function (){
-				self.collection.each(_.bind(self.renderChildren, self));
-			});
+			// this.collection.fetch().then(function (collection){
+				var sortedCollection = _.sortBy(this.collection.models, 'createdAt');
+				_.each(sortedCollection.reverse(), _.bind(self.renderChildren, self));
+				// self.collection.each(_.bind(self.renderChildren, self));
+			// });
 
 		},
 
@@ -50,8 +52,6 @@
 		},
 
 		render: function () {
-			console.log('hey');
-			console.log(this.model);
 			this.$el.append(this.template(this.model.toJSON()));
 		}
 	});

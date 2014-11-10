@@ -108,12 +108,15 @@
 
 			new Parse.Query('Course').get(courseId, {
 				success: function (course){
-					console.log(course);
+					var posts = course.relation('posts').query().collection();
+					posts.fetch();
 					new App.Views.CourseDetailsView({
-						model: course
+						model: course,
+						collection: posts
 					});
 					new App.Views.PostListView({
-						model: course
+						model: course,
+						collection: posts
 					});
 				}, 
 				error: function (course, err){

@@ -11,6 +11,7 @@
 		},
 
 		forgotPassword: function () {
+			$('.forgot-password-wrapper').remove();
 			new App.Views.ForgotPasswordView ();
 		},
 
