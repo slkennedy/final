@@ -500,10 +500,6 @@ html, body {
             font-size: 1.5em;
             font-family: $text-font;
         }
-
-        .highlight:hover {
-            background: $primary-green;
-        }
     }
 
     //updateAccount styles 
@@ -521,7 +517,7 @@ html, body {
             font-family: $header-font;
             font-size: 3em;
             color: $primary-grey;
-            margin: 0;
+            margin: 20px;
             padding: 0;
             text-align: center;
         }
@@ -624,13 +620,14 @@ html, body {
 
         .new-post-header, 
         .post-list-header {
-            h2 {
+            h3 {
+                text-align: center;
                 font-family: $header-font;
+                text-transform: uppercase;
                 background: $transparent-grey;
                 color: $primary-white;
-                margin: 0;
-                padding: 0;
-                text-align: center;
+                padding: 10px 0;
+                margin: 20px 20px 10px;
             }
         }
 
