@@ -12,6 +12,16 @@
 
 		},
 
+		initialize: function () {
+			$('.container').prepend(this.el);
+			this.render();
+		},
+
+
+		render: function () {
+			this.$el.append(this.template(this.model.toJSON()));
+		},
+
 		joinCourse: function (e){	
 			e.preventDefault(); 
 			console.log(this.model);	
@@ -40,27 +50,25 @@
 			var course = this.model;
 			e.preventDefault();
 			var post = new App.Models.Post();
-			post.set ('postContent', $('textarea[name="post"]').val());
+			post.set ('postContent', $('textarea[name="post"]').val() || 'Untitled Post');
 			post.set ('postAuthor', Parse.User.current());
+			post.set ('postUrl', $('input[name="post-url"]').val());
+			
+			if (!post.get('postUrl').match('http')) {
+				post.set('postUrl', 'http://'+post.get('postUrl'));
+			}
+		    
 		    var self = this;
 			post.save().then(function () {
 				var relation = course.relation('posts');
 				relation.add(post);
 				course.save();
-
 				self.collection.add(post);
 			});
-		},
-
-		initialize: function () {
-			$('.container').prepend(this.el);
-			this.render();
-		},
-
-
-		render: function () {
-			this.$el.append(this.template(this.model.toJSON()));
+			$('textarea[name="post"]').val('');
+			$('input[name="post-url"]').val('');
 		}
+
 	});	
 
 

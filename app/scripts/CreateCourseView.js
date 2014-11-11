@@ -24,6 +24,7 @@
 
 		createCourse: function (e){
 			e.preventDefault();
+			var user = Parse.User.current();
 			var query = new Parse.Query(App.Models.School);
 			query.equalTo('objectId', $('.school-list').val());
 			query.first().then(function (school) {
@@ -31,9 +32,12 @@
 				course.set ('courseName', $('input[name="courseName"]').val());
 				course.set ('semester', $('select[name="semester"]').val());
 				course.set ('year', +$('select[name="year"]').val());
-				course.set('school', school);
+				course.set ('school', school);
 
-				course.save({
+				var relationToCourse = course.relation('members');
+  	 			relationToCourse.add(user);
+
+				course.save ({
 					success: function (user){
 						App.router.navigate('userPage', {trigger:true})
 					},

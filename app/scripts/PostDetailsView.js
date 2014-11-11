@@ -30,6 +30,8 @@
 					console.log('boo', err)
 				}
 			});
+			$('textarea[name="comment"]').val('');
+
 		},
 
 		initialize: function (){

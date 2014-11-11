@@ -15,7 +15,6 @@
 		render: function () {
 			this.$el.append(this.template);
 			this.collection.each(_.bind(this.renderChildren, this));
-			console.log(this.siblingcollection);
 		},
 
 		renderChildren: function (course) {
@@ -34,7 +33,7 @@
 		template: _.template($('#templates-possible-courses').html()),
 
 		events: {
-			'click .button' : 'joinCourse'
+			'click .join-course-button' : 'joinCourse'
 		},
 
 		joinCourse: function (e){	
@@ -47,7 +46,6 @@
 
 			course.save();
 			
-			console.log(this.siblingcollection);
 			this.siblingcollection.add(course);
 			this.collection.remove(course);
 			this.remove();
@@ -55,7 +53,6 @@
 
 		initialize: function (siblingcollection) {
 			this.siblingcollection = siblingcollection.siblingcollection;
-			console.log(this.siblingcollection);
 			$('.possible-course-list').append(this.el);
 			this.render();
 		},

@@ -95,7 +95,7 @@
                 <input type='text' name='firstName' placeholder='First Name'>
                 <input type='text' name='lastName' placeholder='Last Name'>
                 <input class='typeahead' type='text' placeholder='School Name'>
-                <label>Profile Image</label>
+                <label>Profile Picture</label>
                 <input type='file' name='avatar' class='avatar-input'>
                 <input type='email' name='email' placeholder='Email'>
                 <input type='password' name='password' placeholder='Password'>
@@ -108,7 +108,9 @@
             <form>
                 <input type='text' name='firstName' value= '<%= firstName %>'>
                 <input type='text' name='lastName' value= '<%= lastName %>'>
-                <input type='text' name='email' value= '<%= email %>'>
+                <input type='text' name='email' value= '<%= email %>'>   
+                <label>Profile Picture</label>
+                <input type='file' name='avatar' class='avatar-input'>                
                 <input type='password' name='password' placeholder='Password'>
 
                 <button class='update-account'>Update Account</button>
@@ -135,7 +137,7 @@
                     <p class='highlight'><%= courseName %></p> 
                     <%= semester %>, <%= year %>
                 </a>
-                <button class='button'>+</button>
+                <button class='join-course-button'>Join Course</button>
             </div>
         </script>
         
@@ -188,6 +190,7 @@
             <div class='new-post-container'>
                 <form class='new-post'> 
                     <textarea rows='3' name='post' placeholder = 'Make a New Post'></textarea>
+                    <input type='url' name='post-url' placeholder='Share a Link'>
                     <button class='create-post'>Post</button>
                 </form>
             </div>
@@ -200,18 +203,24 @@
             <a href='#/posts/<%= objectId %>'>
                 <%= postContent %>
             </a>
+
+            <% if (postUrl) { %>
+            <a href='<%= postUrl %>'><%= postUrl %></a> 
+            <%}%>           
         </script>
 
         <script type='text/template' id='templates-post-details'>
             <h1>Post</h1>
             <p class='post-content'><%= model.postContent %>
+            <% if (model.postUrl) { %>
+            <a href='<%= model.postUrl %>'><%= model.postUrl %></a> 
+            <%}%>           
             <%= model.postAuthor %></p>
-            
-            <h2>Leave a Comment</h2>
+            <h3>Leave a Comment</h3>
             <textarea name='comment' placeholder='Comment on this...'></textarea>
             <button class='create-comment-button'>Comment</button>
 
-            <h2>Comments</h2>
+            <h3>Comments</h3>
             <div class='comment-list-container'></div>
         </script>
 
