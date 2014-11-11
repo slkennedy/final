@@ -2,10 +2,11 @@
 	'use strict';
 
 	App.Views.CreateCourseView = Parse.View.extend ({
+		className: 'create-course-container',
 		template: _.template($('#templates-create-course').html()),
 
 		events: {
-			'click .button' : 'createCourse'
+			'click .create-course-button' : 'createCourse'
 		},
 
 		initialize: function (){

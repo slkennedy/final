@@ -62,9 +62,16 @@
 			$('.user-courses-container').empty();
 			$('.possible-courses-container').empty();
 
-			new App.Views.UserPageView({
-				model: Parse.User.current()
-			});
+			var user = Parse.User.current();
+			if( user === null) {
+				App.router.navigate('login', {trigger:true});
+
+			}else {
+				new App.Views.UserPageView({
+					model: Parse.User.current()
+				});
+			}
+			
 
 			// var usercourses = new App.Collections.UsersCourses()
 			// usercourses.fetch().then(function(){
@@ -91,10 +98,16 @@
 
 		update: function (){
 			$('.container').empty();
-
-			new App.Views.UpdateAccountView ({
-				model: Parse.User.current()
-			});
+			
+			var user = Parse.User.current();
+			if( user === null) {
+				App.router.navigate('login', {trigger:true});
+				
+			}else {
+				new App.Views.UpdateAccountView ({
+					model: Parse.User.current()
+				});
+			}
 		},
 
 		createCourse: function (){
@@ -130,8 +143,17 @@
 
 			new Parse.Query('Post').get(postId, {
 				success: function (post){
+					var comments = post.relation('comments').query().collection();
+					comments.fetch();
+
 					new App.Views.PostDetailsView({
-						model: post
+						model: post,
+						collection: comments
+					});
+
+					new App.Views.CommentsListView ({
+						// model: post, 
+						collection: comments
 					});
 				}, 
 				error: function (course, err){

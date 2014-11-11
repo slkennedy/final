@@ -16,11 +16,12 @@ $secondary-purple: #9b9bba;
 $secondary-blue: #b9e4e8;
 
 $transparent-grey: rgba(34, 30, 31, 0.30);
-$transparent-white: rgba(255, 255, 255, 0.25);
+$transparent-white: rgba(255, 255, 255, 0.10);
 $transparent-blue: rgba(155, 213, 215, 0.75);
 $transparent-yellow: RGBA(247, 219, 73, 0.15);
 $transparent-secondary-yellow: RGBA(247, 219, 73, 0.85);
 $transparent-secondary-blue: rgba(185, 228, 232, 0.25);
+
 
 $header-font: 'PT Mono';
 $text-font: 'PT Sans';
@@ -41,10 +42,9 @@ html, body {
     height: 100%;
     font-family: $text-font;
     background: 
-        linear-gradient($transparent-grey, $transparent-grey), 
+        linear-gradient($transparent-white, $transparent-white), 
         url('../images/Composition.gif') no-repeat center center fixed;
-    background-size: cover;    
-    // background: linear-gradient($transparent-white, $transparent-white), url('../images/comp.jpg');
+    background-size: cover;  
 }
 
 .menu-container {
@@ -129,6 +129,51 @@ html, body {
 
     textarea {
         resize: none;
+    }
+
+    //Home Page Styles
+    .home-page-container {
+        width: 50%;
+        position: relative;
+        margin: 50px auto;
+        padding: 50px 10px 140px;
+        text-align: center;
+        background: $primary-white;
+        @include border-radius(5px);
+
+        h1 {
+            font-family: $header-font;
+            font-size: 3em;
+            color: $primary-grey;
+            margin: 0;
+            margin-bottom: 5px;
+            padding: 0;
+        }
+
+        .line-div {
+            border-bottom: 1px solid $primary-grey;
+            height: 30px;
+            width: 80%;  
+            margin: 0 auto;          
+        }
+
+        ul {
+            list-style: none;
+            padding: 5px;
+            margin-left: 10px;
+            margin-bottom: 15px;
+            position: absolute;
+            text-align: left;
+            bottom: 0;
+            font-family: $text-font;
+            font-size: 1.25em;
+            background: $primary-blue;
+            @include border-radius(2px);
+
+            a {
+                color: $primary-grey;
+            }
+        }
     }
 
     //Login Page Styles
@@ -245,7 +290,7 @@ html, body {
     .create-account-div {
         width: 50%;
         position: relative;
-        margin: auto;
+        margin: 50px auto;
         padding: 40px 0 80px;
         text-align: center;
         background: $primary-white;
@@ -260,6 +305,14 @@ html, body {
             margin: 0;
             padding: 0;
         }
+        
+        label {
+            font-family: $text-font;
+            font-size: 1.25em;
+            color: $primary-grey;
+            margin: 10px auto 5px;
+            display: block;
+        }
 
         input {
             -webkit-appearance: none;
@@ -273,14 +326,44 @@ html, body {
             text-align: left;
             font-size: 1.5em;
         }
-        
-        span {
-            display: block;
 
-            .typeahead {
-                display: block;
-            }
+        .avatar-input {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            -ms-appearance:none;
+            margin: 0 auto;
+            width: 50%;
+            font-family: $text-font;
+            font-size: 1.5em;
+            color: $primary-grey;
+            padding: 10px;
+            background: $transparent-grey;
         }
+        .twitter-typeahead {
+            width: 50%;
+        }
+        .tt-suggestion {
+            font-family: $text-font;
+            font-size: 1.25em;
+            color: $primary-grey;
+            display: block;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .tt-input,
+        .tt-hint,
+        .tt-dropdown-menu {
+            width: 100%;
+        }
+
+        .tt-dropdown-menu {
+            background: $transparent-secondary-yellow;
+            float: right;
+
+        }
+
+
 
         .create-account-button {
             font-size: 1.25em;
@@ -303,10 +386,10 @@ html, body {
     .user-page-container {
         width: 80%;
         position: relative;
-        margin: 0;
+        margin: 25px auto;
         padding: 20px 0 80px;
         background: $primary-white;
-        @include border-radius(0 5px 5px 0);
+        @include border-radius(5px);
 
         .lobby-header {
             padding: 10px;
@@ -427,10 +510,10 @@ html, body {
     .update-account-div {
         width: 80%;
         position: relative;
-        margin: 0;
+        margin: 0 auto;
         padding: 20px 0 80px;
         background: $primary-white;
-        @include border-radius(0 5px 5px 0);
+        @include border-radius(5px);
         position: 50%;
         transform: translateY(25%);
         
@@ -481,10 +564,10 @@ html, body {
     .course-details-container {
         width: 80%;
         position: relative;
-        margin: 0;
+        margin: 25px auto;
         padding: 20px 0 80px;
         background: $primary-white;
-        @include border-radius(0 5px 5px 0);
+        @include border-radius(5px);
 
         .course-header {
             padding: 10px;
@@ -498,6 +581,11 @@ html, body {
                 text-align: center;
                 color: $primary-grey;
                 margin-top: 35px;
+            }
+
+            p {
+                text-align: center;
+                color: $primary-grey;
             }
         }
 
@@ -648,10 +736,10 @@ html, body {
     .post-detail-container {
         width: 80%;
         position: relative;
-        margin: 0;
+        margin: 25px auto;
         padding: 20px 0 80px;
         background: $primary-white;
-        @include border-radius(0 5px 5px 0);
+        @include border-radius(5px);
         text-align: center;
 
         h1 {
@@ -721,6 +809,81 @@ html, body {
             padding: 5px;
             display: block;
         }
+    }
+
+    .create-course-container {
+        width: 50%;
+        position: relative;
+        margin: 50px auto;
+        padding: 40px 0 80px;
+        text-align: center;
+        background: $primary-white;
+        @include border-radius(5px);
+        top: 50%;
+        transform: translateY(-60%);
+        
+        h1 {
+            font-family: $header-font;
+            font-size: 3em;
+            color: $primary-grey;
+            margin: 0;
+            padding: 0;
+        }
+        
+        select {
+            display: block;
+            width: 50%;
+            font-family: $text-font;
+            color: $primary-grey;
+            font-size: 1.25em;
+            margin: 0 auto 5px;
+            padding: 5px;
+        }
+
+        label {
+            font-family: $text-font;
+            font-size: 1.25em;
+            color: $primary-grey;
+            margin: 10px auto 5px;
+            display: block;
+        }
+
+        input {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            -ms-appearance:none;
+            @include border-radius(3px);
+            display: block;
+            margin: 17px auto;
+            width: 50%;
+            height: 2em;
+            text-align: left;
+            font-size: 1.5em;
+        }
+
+        button {
+            font-size: 1.25em;
+            font-family: $text-font;
+            margin: 10px;
+            margin-top: 15px;
+            text-transform: uppercase;           
+            border: none;
+            -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+            -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+            background: $primary-yellow; 
+            color: $primary-grey;
+            padding: 10px;
+            width: 35%;
+        }
+
+        .school-label-div {
+            margin-top: 15px;
+            font-family: $text-font;
+            font-size: 1.25em;
+            color: $primary-grey;
+        }
+
     }
 }
 

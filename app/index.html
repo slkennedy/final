@@ -47,18 +47,16 @@
 
         <!-- TEMPLATES -->
         <script type='text/template' id='templates-home'>
-            <section>
+            <section class='home-page-container'>
                 <h1>Binder</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mollis nibh sit
-                amet libero fermentum condimentum.</p> 
-            </section>
-            <section>
-                <nav>
-                    <ul>
-                        <li><a href='#login'>Login</a></li>
-                        <li><a href='#create'>Create Account</a></li>
-                    </ul>
-                </nav>
+                <p>Collaborate in learning</p> 
+                <div class='line-div'></div>
+                <div class='line-div'></div>
+                <div class='line-div'></div>                
+                <ul>
+                    <li><a href='#login'>Login</a></li>
+                    <li><a href='#create'>Create Account</a></li>
+                </ul>
             </section>
         </script>
 
@@ -97,7 +95,8 @@
                 <input type='text' name='firstName' placeholder='First Name'>
                 <input type='text' name='lastName' placeholder='Last Name'>
                 <input class='typeahead' type='text' placeholder='School Name'>
-                <input type='file' name='avatar' class='avatar'>
+                <label>Profile Image</label>
+                <input type='file' name='avatar' class='avatar-input'>
                 <input type='email' name='email' placeholder='Email'>
                 <input type='password' name='password' placeholder='Password'>
                 <button class='create-account-button'>Create Account</button>
@@ -157,26 +156,27 @@
             <form>
                 <input type='text' name='courseName' placeholder='Course Name'>
 
-                <select name='semester'>
+                <label>Semester: </label><select name='semester'>
                     <option value='Fall'>Fall</option>
                     <option value='Summer'>Summer</option>
                     <option value='Spring'>Spring</option>
                 </select>
 
-                <select name='year'>
+                <label>Year: </label><select name='year'>
                     <option value=2014>2014</option>
                     <option value=2015>2015</option>
                     <option value=2016>2016</option>
                 </select>
 
-                <div><%=Name%></div>
-                <button class='button'>Create Course</button>
+                <div class='school-label-div'><p>School: <%=Name%></p></div>
+                <button class='create-course-button'>Create Course</button>
             </form>
         </script>
 
         <script type="text/template" id='templates-course-details'>
             <div class='course-header'>
                 <h1 class='course-name'><%= courseName %></h1>
+                <p><%= semester %>, <%= year %></p>
             </div>
             <div class='course-action'>
                 <button class='join-course'>Join Us</button>
@@ -206,11 +206,13 @@
             <h1>Post</h1>
             <p class='post-content'><%= model.postContent %>
             <%= model.postAuthor %></p>
-            <h2>Comments</h2>
-            <p>Check out this comment someone left...blah blah blah</p>
+            
             <h2>Leave a Comment</h2>
             <textarea name='comment' placeholder='Comment on this...'></textarea>
             <button class='create-comment-button'>Comment</button>
+
+            <h2>Comments</h2>
+            <div class='comment-list-container'></div>
         </script>
 
         <script type='text/template' id='templates-comment-list'>
@@ -235,6 +237,7 @@
         <script src="scripts/PostListViews.js"></script>
         <script src="scripts/ForgotPasswordView.js"></script>
         <script src="scripts/ResetLoginView.js"></script>
+        <script src="scripts/CommentViews.js"></script>
 
 
 
