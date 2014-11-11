@@ -16,11 +16,13 @@ $secondary-purple: #9b9bba;
 $secondary-blue: #b9e4e8;
 
 $transparent-grey: rgba(34, 30, 31, 0.30);
-$transparent-white: rgba(255, 255, 255, 0.10);
+$transparent-white: rgba(255, 255, 255, 0.1);
 $transparent-blue: rgba(155, 213, 215, 0.75);
 $transparent-yellow: RGBA(247, 219, 73, 0.15);
 $transparent-secondary-yellow: RGBA(247, 219, 73, 0.85);
 $transparent-secondary-blue: rgba(185, 228, 232, 0.25);
+$transparent-secondary-grey: rgba(34, 30, 31, 0.50);
+$transparent-secondary-white: rgba(255, 255, 255, 0.8);
 
 
 $header-font: 'PT Mono';
@@ -42,7 +44,8 @@ html, body {
     height: 100%;
     font-family: $text-font;
     background: 
-        linear-gradient($transparent-white, $transparent-white), 
+        linear-gradient($transparent-white, $transparent-white),
+        // linear-gradient($transparent-secondary-grey, $transparent-secondary-grey), 
         url('../images/Composition.gif') no-repeat center center fixed;
     background-size: cover;  
 }
@@ -240,8 +243,8 @@ html, body {
         .forgot-password {
             background: $transparent-blue;
             color: $primary-grey;
-            float: right;
-            margin: -20px -42px 10px 0;
+            // float: right;
+            // margin: -20px -42px 10px 0;
             height: 30px;
             text-transform: none;
             font-size: 1.5em
@@ -260,7 +263,8 @@ html, body {
             font-family: $text-font;
             float: right;
             clear: both;
-            margin: 0 -28px 20px 0;
+            margin: 20px 10px 0 0;
+            // margin: 0 -28px 20px 0;
             background: $transparent-secondary-yellow;
             padding: 0 5px;
             -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
@@ -351,6 +355,13 @@ html, body {
             display: block;
             width: 100%;
             overflow: hidden;
+            padding-top: 10px;
+            border-bottom: 1px solid $primary-white;
+        }
+
+        .tt-suggestion:hover,
+        .tt-suggestion:focus {
+            background-color: $primary-blue;
         }
 
         .tt-input,
@@ -360,12 +371,13 @@ html, body {
         }
 
         .tt-dropdown-menu {
-            background: $transparent-secondary-yellow;
             float: right;
-
+            position: auto;
+            background: RGBA(239, 239, 239, 1);
+            -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.50), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+            -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.50), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.50), 0 0 40px rgba(0, 0, 0, 0.06) inset;
         }
-
-
 
         .create-account-button {
             font-size: 1.25em;

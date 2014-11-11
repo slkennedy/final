@@ -22,11 +22,42 @@
 			var self = this;
 
 			this.$el.html(this.template({schools: this.collection.toJSON()}));
-			var source = function (query, cb) {
-				cb(self.collection.toJSON());
+			var stringMatcher = function (strs) { 
+
+				return function findMatches(q, cb) {
+					var matches, substrRegex;
+					matches = [];
+
+					substrRegex = new RegExp (q, 'i');
+
+					$.each(strs, function (i, str){
+						console.log(i);
+						if (substrRegex.test(str)) {
+							matches.push({value:str});
+						}
+					});
+
+					cb(matches);
+					console.log(matches);
+
+				};
 			};
 
-			$('.typeahead').typeahead({}, {source: source, name: 'schools', displayKey: 'Name'});
+			var schools = self.collection.toJSON();
+
+			var school = _.pluck(schools, 'Name');
+			console.log(school);
+
+
+
+			$('.typeahead').typeahead({
+				hint: true,
+				highlight: true
+			}, {
+				name: 'schools', 
+				displayKey: 'value',
+				source: stringMatcher(school) 
+			});
 			
 		},
 
