@@ -17,14 +17,18 @@
         <!-- build:js scripts/vendor/modernizr.js -->
         <script src="bower_components/modernizr/modernizr.js"></script>
         <!-- endbuild -->
+        
+        <!-- awesome icon font -->
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
     </head>
     <body>
        
         <nav class='menu-container'>
             <ul class='menu-list'>
-                <a href='#userPage'><li><img src = 'images/icon_home.png'></li></a>
-                <a href='#update'><li><img src = 'images/icon_upload.png'></li></a>
-                <a href='#logout'><li><img src = 'images/icon_logout.png'></li></a>
+                <a href='#userPage'><li><span class="fa fa-home"></span></li></a>
+                <a href='#update'><li><span class="fa fa-cog"></span></li></a>
+                <a href='#logout'><li><span class="fa fa-sign-out"></span></li></a>
             </ul>
         </nav>
         <!-- <div class='logo-div'>
@@ -39,6 +43,7 @@
         <script src="bower_components/underscore/underscore.js"></script>
         <script src="bower_components/backbone/backbone.js"></script>
         <script src="bower_components/typeahead.js/dist/typeahead.bundle.js"></script>
+        <script src="bower_components/moment/moment.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 
@@ -181,7 +186,7 @@
                 <p><%= semester %>, <%= year %></p>
             </div>
             <div class='course-action'>
-                <button class='join-course'>Join Us</button>
+                <button class='join-course'>Join Course</button>
                 <button class='drop-course'>Drop Course</button>
             </div>
             <div class='new-post-header'>
@@ -200,31 +205,41 @@
 
         <script type='text/template' id='templates-post-list'>
             <div class='post-avatar'></div>
-            <a href='#/posts/<%= objectId %>'>
-                <%= postContent %>
+            <a class='post-content-link' href='#/posts/<%= model.objectId %>'>
+                <%= model.postContent %>
             </a>
 
-            <% if (postUrl) { %>
-            <a href='<%= postUrl %>'><%= postUrl %></a> 
-            <%}%>           
+            <p><% if (model.postUrl) { %>
+            <a href='<%= model.postUrl %>'><%= model.postUrl %></a> 
+            <%}%> </p>  
+
+            <p class='post-date'><%=date%></p>
+
         </script>
 
         <script type='text/template' id='templates-post-details'>
             <h1>Post</h1>
-            <p class='post-content'><%= model.postContent %>
+            <p class='post-content'><% if (authorFirst) { %>  
+            <img class='avatar' src = '<%=authorPic%>'><%}%>
+            <% if (authorFirst) { %>        
+            <p class='post-secondary'><%= authorFirst %> <%=authorLast%></p> <%}%>
+            <%= model.postContent %>
             <% if (model.postUrl) { %>
             <a href='<%= model.postUrl %>'><%= model.postUrl %></a> 
-            <%}%>           
-            <%= model.postAuthor %></p>
+            <%}%>
+            
+            <span class='date'><%=date%></span></p>
             <h3>Leave a Comment</h3>
             <textarea name='comment' placeholder='Comment on this...'></textarea>
             <button class='create-comment-button'>Comment</button>
 
             <h3>Comments</h3>
-            <div class='comment-list-container'></div>
         </script>
 
         <script type='text/template' id='templates-comment-list'>
+        </script>
+
+        <script type='text/template' id='templates-comment-items'>
             <%= commentContent %>
         </script>
 

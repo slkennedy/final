@@ -150,9 +150,10 @@
 						model: post,
 						collection: comments
 					});
+					console.log('comments',comments);
 
 					new App.Views.CommentsListView ({
-						// model: post, 
+						model: post, 
 						collection: comments
 					});
 				}, 

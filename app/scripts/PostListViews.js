@@ -43,7 +43,11 @@
 		},
 
 		render: function () {
-			this.$el.append(this.template(this.model.toJSON()));
+			
+			this.$el.append(this.template({
+				model: this.model.toJSON(),
+				date: moment(this.model.get('createdAt')).format('MM/DD/YY h:mm a')
+			}));
 		}
 	});
 

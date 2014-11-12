@@ -9,13 +9,41 @@
 			'click .create-comment-button' : 'createComment'
 		},
 
+		initialize: function (){
+			$('.container').prepend(this.el);
+			new App.Models.Post();
+			this.render();
+		},
+
+		render: function (){
+			var comments = this.collection;
+			console.log(comments);
+			var self = this;
+			var authors = this.model.get('parent');
+			authors.fetch({
+				success:function(author) {
+					var authorFirst = author.get('firstName');
+					var authorLast = author.get('lastName');
+					var authorPic = author.get('avatar');
+					var author = authorFirst + " " + authorLast
+					self.$el.append(self.template({
+						model: self.model.toJSON(),
+						date: moment(self.model.get('createdAt')).format('MM/DD/YY h:mm a'),
+						authorFirst: authorFirst,
+						authorLast: authorLast,
+						authorPic: authorPic
+					}));					
+				}
+			});	
+		},
+
 		createComment: function (e){
 			var post = this.model;
 			e.preventDefault();
 			var comment = new App.Models.Comment();
 			console.log('comment', comment);
 			comment.set ('commentContent', $('textarea[name="comment"]').val());
-			comment.set ('postAuthor', Parse.User.current());
+			comment.set ('commentAuthor', Parse.User.current());
 			comment.set ('post', post);
 			
 			comment.save({
@@ -32,21 +60,6 @@
 			});
 			$('textarea[name="comment"]').val('');
 
-		},
-
-		initialize: function (){
-			// console.log(this.model.toJSON());
-			// console.log(this.model);
-			// console.log(this);
-			// console.log(this.collection);
-			$('.container').append(this.el);
-			new App.Models.Post();
-			// console.log(this.model.toJSON());
-			this.render();
-		},
-
-		render: function (){
-			this.$el.append(this.template({model: this.model.toJSON()}));
 		}
 
 	});

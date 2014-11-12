@@ -20,6 +20,7 @@
 
 		render: function () {
 			this.$el.append(this.template(this.model.toJSON()));
+			console.log(this.model)
 		},
 
 		joinCourse: function (e){	
@@ -52,11 +53,27 @@
 			var post = new App.Models.Post();
 			post.set ('postContent', $('textarea[name="post"]').val() || 'Untitled Post');
 			post.set ('postAuthor', Parse.User.current());
-			post.set ('postUrl', $('input[name="post-url"]').val());
-			
-			if (!post.get('postUrl').match('http')) {
-				post.set('postUrl', 'http://'+post.get('postUrl'));
-			}
+			// post.set ('postUrl', $('input[name="post-url"]').val()) || undefined;
+			post.set ('parent', Parse.User.current());
+			var postUrl = $('input[name="post-url"]').val()
+			console.log('form input', postUrl)
+			if (postUrl && postUrl.match('http://')) {
+				post.set('postUrl', postUrl);
+			} else if (postUrl) {
+				postUrl = 'http://' + postUrl;
+				post.set('postUrl', postUrl)
+			} 
+			// post.set('postUrl', postUrl);
+			// if($('.input[name="post-url"]').val()) {
+			// 	post.set('postUrl', $('input[name="post-url"]').val())
+			// 	if (!post.get('postUrl').match('http')) {
+			// 		post.set('postUrl', 'http://'+post.get('postUrl'));
+			// 	} else { 
+			// 		post.set('postUrl', undefined)
+			// 	}
+			// }
+
+
 		    
 		    var self = this;
 			post.save().then(function () {
@@ -65,6 +82,8 @@
 				course.save();
 				self.collection.add(post);
 			});
+
+			
 			$('textarea[name="post"]').val('');
 			$('input[name="post-url"]').val('');
 		}

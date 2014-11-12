@@ -51,12 +51,12 @@ html, body {
 }
 
 .menu-container {
-    width: 5%;
+    width: 6%;
     height: 100%;
     position: fixed;
     left: 0;
     bottom: 0;
-    background: black;
+    background: $primary-grey;
 
     ul {
         width: 100%;
@@ -71,9 +71,9 @@ html, body {
             height: 100%;
             width: 100%;
             margin: 0;
-            padding: 40px 0;
-            border-bottom: 1px solid $primary-white;
-            border-top: 1px solid $primary-white;
+            padding: 90px 0;
+            // border-bottom: 1px solid $primary-white;
+            // border-top: 1px solid $primary-white;
 
         }
 
@@ -82,8 +82,10 @@ html, body {
         // }
 
         li:hover {
-            background: linear-gradient($primary-white, $primary-white);
-            opacity: 0.7;
+
+            .fa {
+                color: $primary-yellow;
+            }
         }
 
         a {
@@ -92,8 +94,9 @@ html, body {
             text-decoration: none;
         }
 
-        img {
-            width: 60%;
+        .fa {
+            font-size: 2.5em;
+            color: $primary-white;
         }
     }
 }
@@ -124,11 +127,11 @@ html, body {
     padding: 0;
     margin: 0;
 
-    .avatar {
-        // width: 150px;
-        height: 100px;
-        @include border-radius(100%);
-    }
+    // .avatar {
+    //     // width: 150px;
+    //     height: 100px;
+    //     @include border-radius(100%);
+    // }
 
     textarea {
         resize: none;
@@ -170,7 +173,7 @@ html, body {
             bottom: 0;
             font-family: $text-font;
             font-size: 1.25em;
-            background: $primary-blue;
+            background: $primary-yellow;
             @include border-radius(2px);
 
             a {
@@ -718,7 +721,7 @@ html, body {
         ul {
             list-style: none;
             padding: 0;
-            margin: 10px;
+            margin: 10px 60px;
         }
 
         li {
@@ -739,6 +742,11 @@ html, body {
                 -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
                 box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
             }
+
+            .post-date {
+
+
+            }
            
             a {
                 text-decoration: none;
@@ -747,6 +755,8 @@ html, body {
                 font-family: $text-font;
                 width: 100%;
                 margin: 50px 10px;
+                // display: block;
+                // outline: 2px solid red;
             } 
 
         }
@@ -767,7 +777,14 @@ html, body {
         }
 
         li:nth-child(odd) {
-            background: $transparent-yellow;
+            // background: $transparent-yellow;
+            border-bottom: 1px solid $primary-blue;
+            border-top: 1px solid $primary-blue;
+
+        }
+
+        li:nth-child(1) {
+            border-top: none;
         }
     }
 
@@ -780,6 +797,10 @@ html, body {
         background: $primary-white;
         @include border-radius(5px);
         text-align: center;
+
+        *{
+            border: 2px solid red;
+        }
 
         h1 {
             padding: 10px;
@@ -798,7 +819,7 @@ html, body {
             height: 250px;
             background: $primary-yellow;
             text-align: center;
-            padding: 30px;
+            padding: 50px;
             margin: 0 auto 20px;
             overflow: hidden;
             -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
@@ -807,13 +828,39 @@ html, body {
             // -webkit-box-shadow: 2px 8px 6px -6px $primary-grey;
             // -moz-box-shadow: 2px 8px 6px -6px $primary-grey;
             // box-shadow: 2px 8px 6px -6px $primary-grey;
+        
+        }
+
+        // * {
+        //     border: solid red 2px;
+        // }
+
+        .date {
+            float: right;
+            margin: 30px 0 10px;
+        }
+
+        .avatar {
+            width: 15%;
+            @include border-radius(100%);
+            // position: absolute;
+            left: 0;
+            margin: 0;
+            padding: 0;
         }
 
         p {
             font-family: $text-font;
             color: $primary-grey;
             font-size: 1.5em;
+            clear: both;
         }
+
+        a {
+            display: block;
+            clear: both;
+        }
+        
 
         h3 {
             text-align: center;
