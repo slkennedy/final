@@ -10,8 +10,7 @@
 			// console.log(model);
 
 			$('.container').append(this.el);
-			// console.log(this.collection);
-			// new App.Models.Post();
+			
 			this.render();
 		},
 

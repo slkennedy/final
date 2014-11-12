@@ -424,7 +424,9 @@ html, body {
                 position: absolute;
                 top: 0;
                 right: 100px;
-                @include border-radius(0 0 5px 5px);
+                // @include border-radius(0 0 5px 5px);
+                @include border-radius(10px);
+                width: 8%;
             }
         }
 
