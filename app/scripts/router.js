@@ -147,16 +147,10 @@
 					comments.fetch().then(function(comments){
 
 						new App.Views.PostDetailsView({
-						model: post,
-						collection: comments
-						});
-						console.log('comments',comments);
-
-						new App.Views.CommentsListView ({
-							model: post, 
+							model: post,
 							collection: comments
 						});
-
+						console.log('comments',comments);
 					});
 
 					

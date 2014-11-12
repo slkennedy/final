@@ -75,7 +75,7 @@
 				user.set ('email', $('input[name="email"]').val());			
 				user.set ('password', $('input[name="password"]').val());
 
-				var $uploadFile = $('.avatar')[0];
+				var $uploadFile = $('.avatar-input')[0];
 				if ($uploadFile.files.length > 0){
 					var file = $uploadFile.files[0];
 				 	var parseFile = new Parse.File(file.name, file);

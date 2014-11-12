@@ -17,11 +17,11 @@
 
 		render: function (){
 			var comments = this.collection;
-			console.log(comments);
 			var self = this;
 			var authors = this.model.get('parent');
 			authors.fetch({
 				success:function(author) {
+					console.log('auth',author);
 					var authorFirst = author.get('firstName');
 					var authorLast = author.get('lastName');
 					var authorPic = author.get('avatar');
@@ -32,7 +32,12 @@
 						authorFirst: authorFirst,
 						authorLast: authorLast,
 						authorPic: authorPic
-					}));					
+					}));
+
+					new App.Views.CommentsListView ({
+							model: self.model, 
+							collection: comments
+					});					
 				}
 			});	
 		},
