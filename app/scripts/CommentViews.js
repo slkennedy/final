@@ -16,13 +16,16 @@
 
 		render: function (){
 			this.$el.append(this.template);
-			// var self = this;
-			// var post = this.model;
-			// this.$el.empty();
+			console.log("!!!!!!!!!!!!!!!!!",this.collection)
+			this.collection.each(function(model){
+			})
+			var self = this;
+			var post = this.model;
+			this.$el.empty();
 
-			// this.$el.append.html();
-			// var sortedCollection = _.sortBy(this.collection.models, 'createdAt');
-			// _.each(sortedCollection.reverse(), _.bind(self.renderChildren, self));
+			var sortedCollection = _.sortBy(this.collection.models, 'createdAt');
+			_.each(sortedCollection.reverse(), _.bind(self.renderChildren, self));
+
 
 		},
 

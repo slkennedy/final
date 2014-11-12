@@ -6,13 +6,13 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/vendor/assets/font
 
 $primary-grey: #221e1f;
 $primary-white: #ffffff;
-$primary-purple: #2b2b50;
-$primary-green: #d8e164;
+// $primary-purple: #2b2b50;
+// $primary-green: #d8e164;
 $primary-blue: #9bd5d7;
 $primary-yellow: #fbdf4b;
 
 $secondary-grey: #333b3a;
-$secondary-purple: #9b9bba;
+// $secondary-purple: #9b9bba;
 $secondary-blue: #b9e4e8;
 
 $transparent-grey: rgba(34, 30, 31, 0.30);
@@ -43,11 +43,8 @@ $text-font: 'PT Sans';
 html, body {
     height: 100%;
     font-family: $text-font;
-    background: 
-        linear-gradient($transparent-white, $transparent-white),
-        // linear-gradient($transparent-secondary-grey, $transparent-secondary-grey), 
-        url('../images/Composition.gif') no-repeat center center fixed;
-    background-size: cover;  
+    background: linear-gradient($transparent-secondary-grey, $transparent-secondary-grey), url('../images/congruent_outline.png') repeat center center fixed;
+    background-size: 9%;  
 }
 
 .menu-container {
@@ -64,16 +61,12 @@ html, body {
         list-style: none;
         padding: 0;
         text-align: center;
-        top: 50%;
-        transform: translateY(-50%);
 
         li {
             height: 100%;
             width: 100%;
             margin: 0;
-            padding: 90px 0;
-            // border-bottom: 1px solid $primary-white;
-            // border-top: 1px solid $primary-white;
+            padding: 20px 0;
 
         }
 
@@ -99,7 +92,7 @@ html, body {
             color: $primary-white;
         }
     }
-}
+}   
 
 .logo-div {
     position: relative;
@@ -410,23 +403,26 @@ html, body {
 
         .lobby-header {
             padding: 10px;
-            margin-bottom: 20px;
+            margin-bottom: 0;
             font-family: $header-font;
             font-size: 2.5em;
             text-transform: uppercase;
 
             h1 {
                 position: relative;
-                text-align: center;
+                margin-left: 0;
+                margin-top: 0;
+                display: inline-block;
+                // text-align: center;
             }
 
             img {
-                position: absolute;
-                top: 0;
-                right: 100px;
                 // @include border-radius(0 0 5px 5px);
+                display: inline-block;
                 @include border-radius(10px);
                 width: 8%;
+                margin-left: 20px;
+                margin-right: 0;
             }
         }
 
@@ -438,27 +434,23 @@ html, body {
             text-align: center;
 
             h3 {
-                text-align: center;
+                text-align: left;
                 font-family: $header-font;
                 text-transform: uppercase;
                 background: $transparent-grey;
-                color: $primary-white;
-                padding: 10px 0;
-                margin: 20px 20px 10px;
-            }
-
-            .header-possible {
-                margin: 20px 20px 0;
+                color: $primary-grey;
+                padding: 10px 10px;
+                margin: 10px 20px 10px;
                 z-index: 1;
-            }
+        
+                .create-course {
+                    background: $primary-blue;
+                    padding: 5px;
+                    margin: 0 20px 0 0;
+                    float: right;
+                    font-size: 0.65em;
+                }
 
-            .create-course {
-                background: $primary-blue;
-                @include border-radius(0 0 5px 5px);
-                padding: 5px;
-                margin: 0 20px 0 0;
-                float: right;
-                font-size: 1.2em;
             }
         }
 
@@ -474,15 +466,14 @@ html, body {
             // -webkit-box-shadow: 2px 8px 6px -6px $primary-grey;
             // -moz-box-shadow: 2px 8px 6px -6px $primary-grey;
             // box-shadow: 2px 8px 6px -6px $primary-grey;
-            -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
-            -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
-            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+            // -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+            // -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+            // box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
             padding: 10px;
             padding-top: 55px;
             
             .join-course-button {
                 padding: 5px;
-                width: 45%;
                 display: block;
                 margin: 50px auto 0;
                 font-family: $text-font;
@@ -496,17 +487,17 @@ html, body {
             }
         }
 
-        li:nth-of-type(odd) {
-            -webkit-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-            -moz-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-        }
+        // li:nth-of-type(odd) {
+        //     -webkit-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        //     -moz-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        //     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        // }
 
-        .corner {
-            -webkit-box-shadow: 4px 5px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
-            -moz-box-shadow: 4px 5px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
-            box-shadow: 4px 5px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;        
-        }
+        // .corner {
+        //     -webkit-box-shadow: 4px 5px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+        //     -moz-box-shadow: 4px 5px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+        //     box-shadow: 4px 5px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;        
+        // }
         .corner::before {
             content: "";
             position: relative;
@@ -527,10 +518,9 @@ html, body {
             bottom: 73px;
         }
         
-
         a {
             text-decoration: none;
-            color: black;
+            color: $primary-grey;
             font-size: 1.5em;
             font-family: $text-font;
         }
@@ -540,12 +530,12 @@ html, body {
     .update-account-div {
         width: 80%;
         position: relative;
-        margin: 0 auto;
-        padding: 20px 0 80px;
+        margin: 50px auto;
+        padding: 20px 0 20px;
         background: $primary-white;
         @include border-radius(5px);
-        position: 50%;
-        transform: translateY(25%);
+        // position: 50%;
+        // transform: translateY(0%);
         
         h3 {
             font-family: $header-font;

@@ -144,18 +144,22 @@
 			new Parse.Query('Post').get(postId, {
 				success: function (post){
 					var comments = post.relation('comments').query().collection();
-					comments.fetch();
+					comments.fetch().then(function(comments){
 
-					new App.Views.PostDetailsView({
+						new App.Views.PostDetailsView({
 						model: post,
 						collection: comments
-					});
-					console.log('comments',comments);
+						});
+						console.log('comments',comments);
 
-					new App.Views.CommentsListView ({
-						model: post, 
-						collection: comments
+						new App.Views.CommentsListView ({
+							model: post, 
+							collection: comments
+						});
+
 					});
+
+					
 				}, 
 				error: function (course, err){
 					console.log('course not found')
