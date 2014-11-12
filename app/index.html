@@ -211,7 +211,7 @@
                 <%= model.postContent %>
             </a>
 
-            <p><% if (model.postUrl) { %>
+            <p class='post-url-container'><% if (model.postUrl) { %>
             <a href='<%= model.postUrl %>'><%= model.postUrl %></a> 
             <%}%> </p>  
 
@@ -221,16 +221,24 @@
 
         <script type='text/template' id='templates-post-details'>
             <h1>Post</h1>
-            <p class='post-content'><% if (authorFirst) { %>  
-            <img class='avatar' src = '<%=authorPic%>'><%}%>
-            <% if (authorFirst) { %>        
-            <p class='post-secondary'><%= authorFirst %> <%=authorLast%></p> <%}%>
-            <%= model.postContent %>
-            <% if (model.postUrl) { %>
-            <a href='<%= model.postUrl %>'><%= model.postUrl %></a> 
-            <%}%>
+            <div class='post-content'>
+                <% if (authorFirst) { %>  
+                    <p class='post-author-info'>    
+                    <img class='avatar' src = '<%= authorPic %>'>     
+                    <%= authorFirst %> <%=authorLast%>
+                    </p> 
+                <%}%>
+
+                <h3 class='post-body'>
+                    <%= model.postContent %>
+                </h3>
+
+                <% if (model.postUrl) { %>
+                    <a href='<%= model.postUrl %>'><%= model.postUrl %></a> 
+                <%}%>
             
-            <span class='date'><%=date%></span></p>
+                <span class='date'><%=date%></span></p>
+            </div>
             <h3>Leave a Comment</h3>
             <textarea name='comment' placeholder='Comment on this...'></textarea>
             <button class='create-comment-button'>Comment</button>

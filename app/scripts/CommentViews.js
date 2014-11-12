@@ -16,17 +16,12 @@
 
 		render: function (){
 			this.$el.append(this.template);
-			console.log("!!!!!!!!!!!!!!!!!",this.collection)
-			this.collection.each(function(model){
-			})
 			var self = this;
 			var post = this.model;
 			this.$el.empty();
 
 			var sortedCollection = _.sortBy(this.collection.models, 'createdAt');
 			_.each(sortedCollection.reverse(), _.bind(self.renderChildren, self));
-
-
 		},
 
 		renderChildren: function (comment) {
