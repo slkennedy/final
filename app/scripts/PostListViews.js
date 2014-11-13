@@ -43,10 +43,12 @@
 		},
 
 		render: function () {
-			
+			var date = this.model.createdAt;
+			var formatDate = moment(date).format('MM/DD/YY, h:mm a')
+			console.log(date);
 			this.$el.append(this.template({
 				model: this.model.toJSON(),
-				date: moment(this.model.get('createdAt')).format('MM/DD/YY h:mm a')
+				date: formatDate
 			}));
 		}
 	});

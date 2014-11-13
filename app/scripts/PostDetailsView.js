@@ -22,6 +22,7 @@
 			authors.fetch({
 				success:function(author) {
 					console.log('auth',author);
+					console.log('self', self.model);
 					var authorFirst = author.get('firstName');
 					var authorLast = author.get('lastName');
 					var authorPic = author.get('avatar');

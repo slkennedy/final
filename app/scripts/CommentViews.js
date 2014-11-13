@@ -15,13 +15,11 @@
 			var self = this;
 			var post = this.model;
 			this.$el.empty();
-			console.log("!!!!!!!!!!!!",this.model);
 			var sortedCollection = _.sortBy(this.collection.models, 'createdAt');
 			_.each(sortedCollection.reverse(), _.bind(self.renderChildren, self));
 		},
 
 		renderChildren: function (comment) {
-			console.log('sdf');
 			new App.Views.CommentItemsView({
 				model: comment
 			});
