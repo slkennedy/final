@@ -908,6 +908,27 @@ html, body {
         }
 
     }
+
+    .comment-list-container {
+        // *{
+        //     outline: 2px solid red;
+        // }
+
+        ul {
+            list-style: square;
+            font-size: 1.25em;
+            margin-right: 20px;
+        }
+
+        li {
+            margin: 20px 0;
+            border-bottom: 1px solid $primary-blue;
+        }
+
+        li:nth-of-type(odd) {
+
+        }
+    }
 }
 
 //use odd and even selectors to make the posts avatars vary from left and right sides

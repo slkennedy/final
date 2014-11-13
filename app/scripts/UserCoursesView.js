@@ -39,7 +39,7 @@
 		render: function () {
 			$('li').removeClass('corner');
 			this.$el.append(this.template (this.model.toJSON()));
-			$('li:nth-of-type(2)').addClass('corner');
+			$('li:nth-of-type(even)').addClass('corner');
 		}
 	});
 

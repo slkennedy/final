@@ -8,6 +8,8 @@
 		initialize: function (post) {
 			$('.comment-list-container').append(this.el);
 			this.render();
+			this.collection.on('add remove sync', this.render, this);
+
 		},
 
 		render: function (){

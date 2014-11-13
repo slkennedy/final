@@ -44,6 +44,7 @@
 		},
 
 		createComment: function (e){
+			var self = this;
 			var post = this.model;
 			e.preventDefault();
 			var comment = new App.Models.Comment();
@@ -52,19 +53,15 @@
 			comment.set ('commentAuthor', Parse.User.current());
 			comment.set ('post', post);
 			
-			comment.save({
-				success: function (comment){
-					console.log('success', comment)
-					var relation = post.relation('comments');
-					relation.add(comment);
-					post.save();
+			comment.save().then(function () {
+				var relation = post.relation('comments');
+				relation.add(comment);
+				post.save();
+				self.collection.add(comment);
 
-				},
-				error: function (post, err){
-					console.log('boo', err)
-				}
 			});
-			$('textarea[name="comment"]').val('');
+			
+		$('textarea[name="comment"]').val('');
 
 		}
 
