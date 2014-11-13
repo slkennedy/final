@@ -194,13 +194,13 @@
         </script>
 
         <script type='text/template' id='templates-post-list'>
-            <div class='post-avatar'></div>
+            <span class='post-avatar'>Insert post author image and name</span>
             <a class='post-content-link' href='#/posts/<%= model.objectId %>'>
                 <%= model.postContent %>
             </a>
 
             <p class='post-url-container'><% if (model.postUrl) { %>
-            <a href='<%= model.postUrl %>'><%= model.postUrl %></a> 
+            <a class= 'post-url-link' href='<%= model.postUrl %>'><%= model.postUrl %></a> 
             <%}%> </p>  
 
             <p class='post-date'><%=date%></p>
