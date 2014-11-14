@@ -21,8 +21,6 @@
 			var authors = this.model.get('parent');
 			authors.fetch({
 				success:function(author) {
-					console.log('auth',author);
-					console.log('self', self.model);
 					var authorFirst = author.get('firstName');
 					var authorLast = author.get('lastName');
 					var authorPic = author.get('avatar');
@@ -48,17 +46,23 @@
 			var post = this.model;
 			e.preventDefault();
 			var comment = new App.Models.Comment();
-			console.log('comment', comment);
 			comment.set ('commentContent', $('textarea[name="comment"]').val());
 			comment.set ('commentAuthor', Parse.User.current());
 			comment.set ('post', post);
+
+			var commentUrl = $('input[name="comment-url"]').val()
+			if (commentUrl && commentUrl.match('http://')) {
+				comment.set('commentUrl', commentUrl);
+			} else if (commentUrl) {
+				commentUrl = 'http://' + commentUrl;
+				comment.set('commentUrl', commentUrl)
+			}
 			
 			comment.save().then(function () {
 				var relation = post.relation('comments');
 				relation.add(comment);
 				post.save();
 				self.collection.add(comment);
-
 			});
 			
 		$('textarea[name="comment"]').val('');

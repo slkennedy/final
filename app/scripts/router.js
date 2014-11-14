@@ -150,7 +150,6 @@
 							model: post,
 							collection: comments
 						});
-						console.log('comments',comments);
 					});
 
 					

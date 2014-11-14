@@ -31,23 +31,18 @@
 					substrRegex = new RegExp (q, 'i');
 
 					$.each(strs, function (i, str){
-						console.log(i);
 						if (substrRegex.test(str)) {
 							matches.push({value:str});
 						}
 					});
 
 					cb(matches);
-					console.log(matches);
-
 				};
 			};
 
 			var schools = self.collection.toJSON();
 
 			var school = _.pluck(schools, 'Name');
-			console.log(school);
-
 
 
 			$('.typeahead').typeahead({

@@ -32,8 +32,6 @@
 			this.model.set('email', email);
 			this.model.set('password', password);
 
-			console.log(this.model.get('school'));
-
 			var $uploadFile = $('.avatar-input')[0];
 			if ($uploadFile.files.length > 0) {
 				var file = $uploadFile.files[0];

@@ -35,13 +35,24 @@
 		template: _.template($('#templates-comment-items').html()),
 
 		initialize: function () {
-			console.log(this.model);
 			$('.comment-list').append(this.el);
 			this.render();
 		},
 
 		render: function () {
-			this.$el.append(this.template(this.model.toJSON()));
+			var self = this;
+			this.model.set ('parent', this.model.get('commentAuthor'));		
+			var authors = this.model.get('parent');
+			authors.fetch().then(function (){
+				var date = self.model.createdAt;
+				var formatDate = moment(date).format('MM/DD/YY, h:mm a')
+				
+				self.$el.append(self.template({
+					model: self.model.toJSON(),
+					date: formatDate,
+					author: authors.toJSON()
+				}));		
+			});	
 		}
 	});
 

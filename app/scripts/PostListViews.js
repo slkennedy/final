@@ -39,17 +39,24 @@
 
 		initialize: function () {
 			$('.post-list').append(this.el);
-			this.render();
+			this.render();		
 		},
 
 		render: function () {
-			var date = this.model.createdAt;
-			var formatDate = moment(date).format('MM/DD/YY, h:mm a')
-			console.log(date);
-			this.$el.append(this.template({
-				model: this.model.toJSON(),
-				date: formatDate
-			}));
+			var self = this;
+			this.model.set ('parent', this.model.get('postAuthor'));		
+			var authors = this.model.get('parent');
+			authors.fetch().then(function (){
+				var date = self.model.createdAt;
+				var formatDate = moment(date).format('MM/DD/YY, h:mm a')
+				
+				self.$el.append(self.template({
+					model: self.model.toJSON(),
+					date: formatDate,
+					author: authors.toJSON()
+				}));		
+			});	
+			
 		}
 	});
 

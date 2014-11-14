@@ -21,7 +21,6 @@
 				$('input[name="email"]').val(),
 				$('input[name="password"]').val(), {
 					success: function (user){
-						console.log('logged in')
 						App.router.navigate('userPage', {trigger:true});
 					},
 					error: function (user, error){

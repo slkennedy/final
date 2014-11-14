@@ -33,13 +33,10 @@
 		initialize: function () {
 			$('.user-course-list').append(this.el);
 			this.render();
-			// this.collection.on('change', this.render, this);
 		},
 
 		render: function () {
-			$('li').removeClass('corner');
 			this.$el.append(this.template (this.model.toJSON()));
-			$('li:nth-of-type(even)').addClass('corner');
 		}
 	});
 

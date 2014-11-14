@@ -58,7 +58,10 @@
 		},
 
 		render: function () {
+			$('li').removeClass('corner');
 			this.$el.append(this.template(this.model.toJSON()));
+			$('li:nth-of-type(even)').addClass('corner');
+
 		}
 	});
 

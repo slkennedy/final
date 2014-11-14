@@ -152,11 +152,18 @@ html, body {
             bottom: 0;
             font-family: $text-font;
             font-size: 1.25em;
-            background: $primary-yellow;
-            @include border-radius(2px);
 
             a {
                 color: $primary-grey;
+            }
+
+            li {
+                display: inline-block;
+                background: $primary-yellow;
+                margin-top: 5px;
+                padding: 10px;
+                @include border-radius(2px);
+
             }
         }
     }
@@ -693,34 +700,51 @@ html, body {
                 height: 150px;
                 background: $primary-yellow;
                 display: inline-block;
-                margin: 0;            
+                margin: 0;
+                margin-bottom: 20px;    
+                text-align: center;
+
+                img {
+                    width: 50%;
+                    margin: 10px;
+                    @include border-radius(100%);
+                }        
             }
 
-            .post-date {
-                margin-left: 20px;
-                float: right;
-                margin: 0;
-                margin-top: -50px;
+            .post-contents {
+                display: inline-block;
+                vertical-align: top;
+                padding-left: 10px;
+                margin-top: 20px;
+                max-width: 80%;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
-           
+
             a {
                 text-decoration: none;
                 color: $primary-grey;
                 font-size: 1.5em;
                 font-family: $text-font;
             } 
+
             .post-url-container {
                 width: 100%;
-                display: block;
-                text-align: center;
+                height: 20%;
+                // display: block;
+                text-align: left;
             }
 
             .post-url-link {
-                // text-decoration: none;
                 color: $link-blue;
                 font-family: $text-font;
-                margin: 0 auto;
-   
+                margin: 0 auto; 
+                display: inline-block;
+                max-width: 60%;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
 
         }
@@ -824,6 +848,14 @@ html, body {
             display: block;
         }
 
+        input {
+            display: block;
+            margin: 5px 20px;
+            width: 50%;
+            font-family: $text-font;
+            font-size: 1.25em;
+        }
+
         button {
             font-size: 1.25em;
             font-family: $text-font;
@@ -910,19 +942,68 @@ html, body {
     }
 
     .comment-list-container {
-        // *{
-        //     outline: 2px solid red;
-        // }
 
         ul {
-            list-style: square;
-            font-size: 1.25em;
-            margin-right: 20px;
+            list-style: none;
+            padding: 0;
+            margin: 15px 20px;
         }
 
         li {
-            margin: 20px 0;
+            width: 100%;
+            margin-bottom: 10px;
             border-bottom: 1px solid $primary-blue;
+        
+            .comment-author-info {
+                width: 150px;
+                height: 150px;
+                background: $primary-blue;
+                display: inline-block;
+                margin: 0;
+                margin-bottom: 20px;    
+                text-align: center;
+
+                img {
+                    width: 50%;
+                    margin: 10px;
+                    @include border-radius(100%);
+                }        
+                
+            }
+            
+            .comment-content {
+                display: inline-block;
+                vertical-align: top;
+                padding-left: 10px;
+                margin-top: 20px;
+                max-width: 80%;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+
+                .comment-contents {
+                    display: inline-block;
+                    vertical-align: top;
+                    margin-top: 20px;
+                    max-width: 100%;
+                    font-size: 1.5em;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+
+                a {
+                    color: $link-blue;
+                    display: inline-block;
+                    font-size: 1.5em;
+                    max-width: 80%;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
+
+
         }
 
         li:nth-of-type(odd) {
@@ -930,9 +1011,4 @@ html, body {
         }
     }
 }
-
-//use odd and even selectors to make the posts avatars vary from left and right sides
-//form validation - unheap
-//image sizing on upload - unheap
-//Adjust lightness of background image 
 
