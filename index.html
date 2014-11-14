@@ -184,7 +184,7 @@
             </div>
             <div class='new-post-container'>
                 <form class='new-post'> 
-                    <textarea rows='3' name='post' placeholder = 'Make a New Post'></textarea>
+                    <textarea rows='3' name='post' placeholder = 'Post Your Questions, Notes or Resources...'></textarea>
                     <input type='url' name='post-url' placeholder='Share a Link'>
                     <button class='create-post'>Post</button>
                 </form>
@@ -194,7 +194,12 @@
         </script>
 
         <script type='text/template' id='templates-post-list'>
-            <span class='post-avatar'>Insert post author image and name</span>
+            <span class='post-avatar'>
+                <img class='avatar' src='<%=author.avatar%>'>
+                <p><%=author.firstName%></p>
+                <p class='post-date'><%=date%></p>
+            </span>
+            <div class='post-contents'>
             <a class='post-content-link' href='#/posts/<%= model.objectId %>'>
                 <%= model.postContent %>
             </a>
@@ -202,8 +207,8 @@
             <p class='post-url-container'><% if (model.postUrl) { %>
             <a class= 'post-url-link' href='<%= model.postUrl %>'><%= model.postUrl %></a> 
             <%}%> </p>  
-
-            <p class='post-date'><%=date%></p>
+        </div>
+            
 
         </script>
 
@@ -229,6 +234,7 @@
             </div>
             <h3>Leave a Comment</h3>
             <textarea name='comment' placeholder='Comment on this...'></textarea>
+            <input type='url' name='comment-url' placeholder='Share a Link'>
             <button class='create-comment-button'>Comment</button>
 
             <h3>Comments</h3>
@@ -239,7 +245,15 @@
         </script>
 
         <script type='text/template' id='templates-comment-items'>
-            <%= commentContent %>
+            <div class='comment-author-info'>
+                <img class='avatar' src='<%= author.avatar %>'>
+                <p><%= author.firstName %></p>
+                <p><%= date %></p>
+            </div>
+            <div class='comment-content'>
+                <p class='comment-contents'><%= model.commentContent %></p>
+                <p><a href='<%=model.commentUrl%>'><%= model.commentUrl %></a></p>
+            </div>
         </script>
 
         <script src="scripts/main.js"></script>
